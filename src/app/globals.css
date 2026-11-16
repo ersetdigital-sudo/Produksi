@@ -1,0 +1,60 @@
+@import "./samaqu.css";
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  background: var(--bg);
+  -webkit-text-size-adjust: 100%;
+}
+
+body.ui,
+body.ui .tabs button,
+body.ui .btn,
+body.ui .in,
+body.ui .chip,
+body.ui .seg button,
+body.ui .seg a {
+  font-family: var(--font-jakarta), "Plus Jakarta Sans", system-ui, sans-serif;
+}
+
+body.ui .code,
+body.ui .ph,
+body.ui .pt .pk,
+body.ui .kk small {
+  font-family: var(--font-jetbrains), "JetBrains Mono", ui-monospace, monospace;
+}
+
+body.ui .in {
+  font-weight: 500;
+}
+
+body.ui .btn {
+  font-weight: 600;
+}
+
+/* Mockup mobile memakai kanvas 390px; di aplikasi nyata lebar mengikuti layar. */
+@media (max-width: 799px) {
+  .m {
+    width: 100%;
+    min-height: 100dvh;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

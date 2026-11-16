@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Pengeluaran — Mobile, catat pengeluaran</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="./samaqu.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>body{margin:0}</style>
+</helmet>
+<div class="ui m" style="width: 390px; min-height: 1250px">
+  <header class="mtop" style="justify-content: flex-start">
+    <a class="btn btn-s" href="M5-Pengeluaran.dc.html" aria-label="Kembali ke daftar pengeluaran" style="width: 44px; height: 44px; padding: 0"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></a>
+    <h1 class="h1 grow" style="font-size: 20px">Catat pengeluaran</h1>
+    
+  </header>
+  <div class="mbody">
+    <div class="f"><label for="c-t">Tanggal</label><input id="c-t" class="in" type="date" value="2026-11-10"></div>
+
+    <div class="col" style="gap: 6px"><span class="flabel">Kategori</span>
+      <div class="row wrap" style="gap: 8px" role="group" aria-label="Kategori"><button class="chip on" type="button">Service mesin</button><button class="chip" type="button">Sparepart</button><button class="chip" type="button">Gas</button><button class="chip" type="button">Alat jahit</button><button class="chip" type="button">Lain-lain</button></div>
+    </div>
+
+    <div class="f"><label for="c-m">Mesin</label><select id="c-m" class="in"><option>Mesin Obras 1</option><option>Mesin Jahit 1</option><option>Mesin Jahit 2</option></select><span class="hint">Muncul untuk Service mesin dan Sparepart. Otomatis masuk ke riwayat mesin itu.</span></div>
+
+    <div class="f"><label for="c-j">Jumlah (Rp)</label><input id="c-j" class="in num" inputmode="numeric" pattern="[0-9]*" value="350.000" style="height: 60px; font-size: 24px; font-weight: 700"><span class="hint">Titik ribuan muncul otomatis saat mengetik.</span></div>
+
+    <div class="f"><label for="c-n">Keterangan</label><textarea id="c-n" class="in" rows="3" placeholder="Apa yang dikerjakan atau dibeli"></textarea></div>
+
+    <div class="col" style="gap: 6px"><span class="flabel">Foto nota (opsional)</span>
+      <div class="g2" style="gap: 10px">
+        <button class="btn btn-s" type="button" style="height: 72px; flex-direction: column; gap: 4px; border-style: dashed; border-color: var(--ln3)"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>Ambil foto</button>
+        <button class="btn btn-s" type="button" style="height: 72px; flex-direction: column; gap: 4px; border-style: dashed; border-color: var(--ln3)"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="m4 16 4-4 4 4 3-3 5 5"/><circle cx="15" cy="9.500" r="1.500"/></svg>Pilih dari galeri</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="mfoot">
+    <div class="mact"><button class="btn btn-p btn-lg" type="button">Simpan pengeluaran</button><a class="btn btn-g" href="M5-Pengeluaran.dc.html" style="height: 44px">Batal</a></div>
+    <nav class="tabbar" aria-label="Menu utama">
+      <a href="M1-Beranda.dc.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Beranda</a>
+      <a href="M2-Warna.dc.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>Stok</a>
+      <a href="M8-Jadwal.dc.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M8 14h3"/></svg>Produksi</a>
+      <a href="M5-Pengeluaran.dc.html" class="on" aria-current="page"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h14v18l-3-2-2 2-2-2-2 2-2-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg>Biaya</a>
+      <a href="M7-Pengaturan.dc.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg>Pengaturan</a>
+    </nav>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1250}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

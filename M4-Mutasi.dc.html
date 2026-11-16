@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Mutasi Stok — Mobile</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="./samaqu.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.pb{display:flex;flex-direction:column;gap:10px;padding:16px;border-top:1px solid var(--ln)}
+.pb:first-child{border-top:0}
+</style>
+</helmet>
+<div class="ui m" style="width: 390px; min-height: 1300px; position: relative">
+  <header class="mtop">
+    <h1 class="h1">Produksi</h1>
+    
+  </header>
+  <div class="mbody">
+    <div class="seg" role="tablist" aria-label="Bagian produksi"><a href="M8-Jadwal.dc.html">Jadwal</a><a href="M10-Aksesoris.dc.html">Aksesoris</a><a class="on" href="M4-Mutasi.dc.html" aria-current="page">Mutasi stok</a></div>
+    <div class="row wrap" style="gap: 8px" role="group" aria-label="Saring jenis mutasi"><button class="{{cAll}}" type="button" onClick="{{fAll}}">Semua</button><button class="{{cM}}" type="button" onClick="{{fM}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>Masuk</button><button class="{{cK}}" type="button" onClick="{{fK}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>Keluar</button><button class="{{cO}}" type="button" onClick="{{fO}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1M9 11h6M9 15h4"/></svg>Opname</button></div>
+
+    <section class="col {{g1}}" style="gap: 8px" aria-labelledby="r-a">
+      <h2 class="lbl" id="r-a">Hari ini · 10 Nov</h2>
+      <div class="card">
+        <div class="li {{hK}}" style="border-top: 0"><span class="ico"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></span><div class="grow"><div style="font-weight: 600">Benang Jahit <span class="code">722</span></div><div class="sub">Keluar · Superblack · Lea · 09.12</div></div><b class="num">−2 cone</b></div>
+        <div class="li {{hK}}"><span class="ico"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></span><div class="grow"><div style="font-weight: 600">Resleting Jepang <span class="code">502</span></div><div class="sub">Keluar · Broken White · Lea · 08.40</div></div><b class="num">−18 pcs</b></div>
+      </div>
+    </section>
+
+    <section class="col {{g2}}" style="gap: 8px" aria-labelledby="r-b">
+      <h2 class="lbl" id="r-b">Kemarin · 9 Nov</h2>
+      <div class="card">
+        <div class="li {{hM}}" style="border-top: 0"><span class="ico"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span><div class="grow"><div style="font-weight: 600">Kancing Manset <span class="code">322</span></div><div class="sub">Masuk · Lea · 15.05</div></div><b class="num">+2 gross</b></div>
+        <div class="li {{hK}}"><span class="ico"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></span><div class="grow"><div style="font-weight: 600">Kancing Manset <span class="code">503</span></div><div class="sub">Keluar · Latte · Lea · 10.20</div></div><b class="num">−1 gross</b></div>
+      </div>
+    </section>
+
+    <section class="col" style="gap: 8px" aria-labelledby="r-c">
+      <h2 class="lbl" id="r-c">8 Nov</h2>
+      <div class="card">
+        <div class="li {{hO}}" style="border-top: 0"><span class="ico"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1M9 11h6M9 15h4"/></svg></span><div class="grow"><div style="font-weight: 600">Benang Jahit <span class="code">172</span></div><div class="sub">Opname · disesuaikan · 16.30</div></div><b class="num">jadi 0</b></div>
+        <div class="li {{hK}}"><span class="ico"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></span><div class="grow"><div style="font-weight: 600">Benang Jahit <span class="code">069</span></div><div class="sub">Keluar · cadangan · Latte · 11.02</div></div><b class="num">−1 cone</b></div>
+        <div class="li {{hM}}"><span class="ico"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span><div class="grow"><div style="font-weight: 600">Resleting Jepang <span class="code">697</span></div><div class="sub">Masuk · Lea · 09.15</div></div><b class="num">+50 pcs</b></div>
+      </div>
+    </section>
+
+    <button class="btn btn-s" type="button" style="height: 48px">Muat lebih banyak</button>
+  </div>
+
+  <div class="mfoot">
+    <div class="mact">
+      <button class="btn btn-p btn-lg" type="button" onClick="{{bukaKeluar}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>Catat barang keluar</button>
+      <div class="g2" style="gap: 8px"><button class="btn btn-s" type="button" style="height: 44px" onClick="{{bukaMasuk}}">Catat masuk</button><button class="btn btn-s" type="button" style="height: 44px" onClick="{{bukaOpname}}">Opname</button></div>
+    </div>
+    <nav class="tabbar" aria-label="Menu utama">
+      <a href="M1-Beranda.dc.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Beranda</a>
+      <a href="M2-Warna.dc.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>Stok</a>
+      <a href="M8-Jadwal.dc.html" class="on" aria-current="page"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M8 14h3"/></svg>Produksi</a>
+      <a href="M5-Pengeluaran.dc.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h14v18l-3-2-2 2-2-2-2 2-2-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg>Biaya</a>
+      <a href="M7-Pengaturan.dc.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg>Pengaturan</a>
+    </nav>
+  </div>
+
+  <sc-if value="{{drKeluar}}" hint-placeholder-val="{{ false }}">
+    <div class="ovl full">
+      <div class="dlg" role="dialog" aria-modal="true" aria-labelledby="m4-fk">
+        <div class="dlg-h" style="justify-content: flex-start; padding: 12px 8px 12px 16px"><h2 class="h2 grow" id="m4-fk" style="font-size: 18px">Catat barang keluar</h2><button class="xbtn" type="button" aria-label="Tutup" onClick="{{tutup}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+        <div class="dlg-b" style="padding: 16px">
+          <div class="seg" role="group" aria-label="Cara mencatat" style="display: flex"><button type="button" class="{{wCls}}" style="flex: 1; height: 44px" onClick="{{toWarna}}">Per warna</button><button type="button" class="{{mCls}}" style="flex: 1; height: 44px" onClick="{{toMaterial}}">Per material</button></div>
+
+          <sc-if value="{{isWarna}}" hint-placeholder-val="{{ true }}">
+            <div class="col" style="gap: 14px">
+              <div class="f"><label for="m4-w">Warna kain</label><select id="m4-w" class="in"><option>Latte · B-01 · Col#54</option><option>Superblack · B-01 · Col#14</option><option>Broken White · B-01 · Col#15</option></select></div>
+              <div class="row"><div class="sw" style="--c: #B79877; width: 44px; height: 44px" role="img" aria-label="Foto kain Latte"></div><p class="sub grow">5 pasangan Latte. Isi yang keluar, biarkan 0 kalau tidak dipakai.</p></div>
+              <div class="card">
+                <sc-if value="{{cadOff}}" hint-placeholder-val="{{ true }}">
+                  <div class="pb">
+                    <div class="row sp"><b>Benang Jahit</b><span class="b b-wr"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 2.5 20h19z"/><path d="M12 10v4M12 17v.01"/></svg>Utama habis</span></div>
+                    <div class="note note-wr" style="flex-direction: column"><div>Kode utama <span class="code">172</span> habis. Cadangan <span class="code">069</span> tersedia 14 cone.</div><button class="btn btn-p" type="button" style="height: 48px; width: 100%" onClick="{{useCad}}">Pakai cadangan 069</button></div>
+                  </div>
+                </sc-if>
+                <sc-if value="{{cadOn}}" hint-placeholder-val="{{ false }}">
+                  <div class="pb">
+                    <div class="row sp"><b>Benang Jahit</b><span class="b b-wr"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 2.5 20h19z"/><path d="M12 10v4M12 17v.01"/></svg>Pakai cadangan</span></div>
+                    <p class="sub">Memakai <span class="code">069</span> · sisa 14 cone</p>
+                    <div class="f"><label for="m4-1">Jumlah keluar (cone)</label><div class="step"><button type="button" aria-label="Kurangi"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/></svg></button><input id="m4-1" class="in" inputmode="numeric" pattern="[0-9]*" value="1"><button type="button" aria-label="Tambah"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+                    <button class="btn btn-g btn-sm" type="button" style="align-self: flex-start; height: 44px; padding: 0" onClick="{{undoCad}}">Batalkan pakai cadangan</button>
+                  </div>
+                </sc-if>
+                <div class="pb"><div class="row sp"><b>Benang Obras</b><span class="b b-nt">Belum diisi</span></div><p class="sub"><span class="ph">[kode]</span> · isi dulu di Katalog Warna</p></div>
+                <div class="pb"><div class="row sp"><b>Benang Tarboosh</b><span class="b b-nt">Belum diisi</span></div><p class="sub"><span class="ph">[kode]</span> · isi dulu di Katalog Warna</p></div>
+                <div class="pb">
+                  <div class="row sp"><b>Resleting Jepang</b><span class="b b-ok"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>Aman</span></div>
+                  <p class="sub">Utama <span class="code">697</span> · sisa 85 pcs</p>
+                  <div class="f"><label for="m4-4">Jumlah keluar (pcs)</label><div class="step"><button type="button" aria-label="Kurangi"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/></svg></button><input id="m4-4" class="in" inputmode="numeric" pattern="[0-9]*" value="20"><button type="button" aria-label="Tambah"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+                </div>
+                <div class="pb">
+                  <div class="row sp"><b>Kancing Manset</b><span class="b b-no"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3h8l5 5v8l-5 5H8l-5-5V8z"/><path d="m9 9 6 6M15 9l-6 6"/></svg>Habis</span></div>
+                  <p class="sub">Utama <span class="code">503</span> (Merak) · sisa 0 gross · tanpa cadangan</p>
+                  <div class="f"><label for="m4-5">Jumlah keluar (gross)</label><div class="step"><button type="button" aria-label="Kurangi"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/></svg></button><input id="m4-5" class="in" inputmode="numeric" pattern="[0-9]*" value="1" style="border-color: var(--no)"><button type="button" aria-label="Tambah"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+                  <div class="note note-no"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3h8l5 5v8l-5 5H8l-5-5V8z"/><path d="m9 9 6 6M15 9l-6 6"/></svg><div>Stok kurang 1 gross. Tetap bisa disimpan: stok jadi minus dan ditandai untuk opname.</div></div>
+                </div>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{isMaterial}}" hint-placeholder-val="{{ false }}">
+            <div class="col" style="gap: 14px">
+              <div class="f"><label for="m4-j">Jenis material</label><select id="m4-j" class="in"><option>Resleting Jepang</option><option>Benang Jahit</option><option>Benang Obras</option><option>Benang Tarboosh</option><option>Kancing Manset</option></select></div>
+              <div class="f"><label for="m4-k">Kode</label><select id="m4-k" class="in"><option>502 · sisa 32 pcs</option><option>722 · sisa 120 pcs</option><option>697 · sisa 85 pcs</option></select></div>
+              <div class="f"><label for="m4-q">Jumlah keluar (pcs)</label><div class="step"><button type="button" aria-label="Kurangi"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/></svg></button><input id="m4-q" class="in" inputmode="numeric" pattern="[0-9]*" value="40"><button type="button" aria-label="Tambah"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+              <div class="note note-wr"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 2.5 20h19z"/><path d="M12 10v4M12 17v.01"/></svg><div>Stok <span class="code">502</span> tinggal 32 pcs, kurang 8. Tetap bisa disimpan dan ditandai untuk opname.</div></div>
+              <div class="f"><label for="m4-u">Untuk warna (opsional)</label><select id="m4-u" class="in"><option>Broken White · B-01 · Col#15</option><option>Tidak terkait warna tertentu</option></select></div>
+            </div>
+          </sc-if>
+
+          <div class="f"><label for="m4-c">Catatan (opsional)</label><textarea id="m4-c" class="in" rows="2" placeholder="Misalnya: untuk produksi minggu ini"></textarea></div>
+        </div>
+        <div class="dlg-f" style="padding: 12px 16px; gap: 8px"><button class="btn btn-p btn-lg" type="button" onClick="{{tutup}}">Simpan barang keluar</button><button class="btn btn-g" type="button" style="height: 44px" onClick="{{tutup}}">Batal</button></div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{drMasuk}}" hint-placeholder-val="{{ false }}">
+    <div class="ovl bot">
+      <div class="dlg" role="dialog" aria-modal="true" aria-labelledby="m4-fm">
+        <div class="dlg-h"><h2 class="h2" id="m4-fm">Catat barang masuk</h2><button class="xbtn" type="button" aria-label="Tutup" onClick="{{tutup}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+        <div class="dlg-b" style="padding: 16px">
+          <div class="f"><label for="m4-mk">Material</label><select id="m4-mk" class="in"><option>Benang Jahit 172 · sisa 0 cone</option><option>Benang Jahit 722 · sisa 24 cone</option><option>Resleting Jepang 502 · sisa 32 pcs</option></select></div>
+          <div class="row" style="gap: 10px; align-items: flex-end">
+            <div class="f grow"><label for="m4-mq">Jumlah masuk</label><input id="m4-mq" class="in num" inputmode="numeric" pattern="[0-9]*" value="2" style="font-weight: 700"></div>
+            <div class="f" style="width: 120px"><label for="m4-ms">Satuan</label><select id="m4-ms" class="in"><option>lusin</option><option>cone</option></select></div>
+          </div>
+          <p class="sub">2 lusin = 24 cone. Status <span class="code">172</span> kembali Aman.</p>
+        </div>
+        <div class="dlg-f" style="padding: 12px 16px; gap: 8px"><button class="btn btn-g" type="button" style="height: 44px" onClick="{{tutup}}">Batal</button><button class="btn btn-p btn-lg" type="button" onClick="{{tutup}}">Simpan barang masuk</button></div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{drOpname}}" hint-placeholder-val="{{ false }}">
+    <div class="ovl bot">
+      <div class="dlg" role="dialog" aria-modal="true" aria-labelledby="m4-fo">
+        <div class="dlg-h"><h2 class="h2" id="m4-fo">Opname stok</h2><button class="xbtn" type="button" aria-label="Tutup" onClick="{{tutup}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+        <div class="dlg-b" style="padding: 16px">
+          <div class="f"><label for="m4-ok">Material</label><select id="m4-ok" class="in"><option>Benang Jahit 069 · tercatat 14 cone</option><option>Benang Jahit 722 · tercatat 24 cone</option></select></div>
+          <div class="f"><label for="m4-oq">Hasil hitung di rak (cone)</label><input id="m4-oq" class="in num" inputmode="numeric" pattern="[0-9]*" value="12" style="font-weight: 700"></div>
+          <div class="note note-wr"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 2.5 20h19z"/><path d="M12 10v4M12 17v.01"/></svg><div>Selisih −2 cone. Stok disesuaikan jadi 12 cone.</div></div>
+        </div>
+        <div class="dlg-f" style="padding: 12px 16px; gap: 8px"><button class="btn btn-g" type="button" style="height: 44px" onClick="{{tutup}}">Batal</button><button class="btn btn-p btn-lg" type="button" onClick="{{tutup}}">Simpan opname</button></div>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1300}}'>
+class Component extends DCLogic {
+constructor(props) { super(props); this.state = { dr: null, mode: 'warna', cad: false, f: 'all' }; }
+renderVals() {
+const s = this.state || {};
+const f = s.f || 'all';
+const hid = (k) => (f === 'all' || f === k) ? '' : 'hid';
+const chip = (k) => 'chip' + (f === k ? ' on' : '');
+const w = (s.mode || 'warna') === 'warna';
+const go = (d) => () => this.setState({ dr: d });
+return {
+drKeluar: s.dr === 'keluar', drMasuk: s.dr === 'masuk', drOpname: s.dr === 'opname',
+bukaKeluar: go('keluar'), bukaMasuk: go('masuk'), bukaOpname: go('opname'), tutup: go(null),
+cAll: chip('all'), cM: chip('m'), cK: chip('k'), cO: chip('o'),
+fAll: () => this.setState({ f: 'all' }), fM: () => this.setState({ f: 'm' }), fK: () => this.setState({ f: 'k' }), fO: () => this.setState({ f: 'o' }),
+hM: hid('m'), hK: hid('k'), hO: hid('o'),
+g1: (f === 'all' || f === 'k') ? '' : 'hid',
+g2: (f === 'o') ? 'hid' : '',
+isWarna: w, isMaterial: !w,
+wCls: w ? 'on' : '', mCls: w ? '' : 'on',
+toWarna: () => this.setState({ mode: 'warna' }),
+toMaterial: () => this.setState({ mode: 'material' }),
+cadOff: !s.cad, cadOn: !!s.cad,
+useCad: () => this.setState({ cad: true }),
+undoCad: () => this.setState({ cad: false })
+};
+}
+}
+</script>
+</body>
+</html>

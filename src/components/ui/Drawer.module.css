@@ -1,0 +1,165 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+}
+
+.dialog {
+  max-width: 480px;
+  height: 100%;
+}
+
+:global(.dlg.xl) {
+  max-width: 1060px;
+}
+
+.header {
+  flex: none;
+}
+
+.heading {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.titleAside {
+  display: inline-flex;
+  align-items: center;
+}
+
+.headerEnd {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+}
+
+.headerAside {
+  display: inline-flex;
+  align-items: center;
+}
+
+.leading {
+  flex: none;
+  display: inline-flex;
+}
+
+.body {
+  min-height: 0;
+}
+
+.footer {
+  flex: none;
+}
+
+.full .dialog {
+  max-width: none;
+  border-radius: 0;
+}
+
+.center {
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+}
+
+.center .dialog {
+  height: auto;
+  max-width: 420px;
+  border-radius: 14px;
+}
+
+.center .body {
+  flex: none;
+}
+
+.center .footer {
+  border-top: 0;
+  padding-top: 0;
+}
+
+@media (max-width: 799px) {
+  .overlay:not(.center) {
+    padding: 0;
+  }
+
+  .overlay:not(.center) .dialog {
+    max-width: none;
+    height: 100%;
+    border-radius: 0;
+  }
+
+  .overlay:not(.center) .body {
+    flex: 1;
+    overflow-y: auto;
+  }
+
+  .overlay:not(.center) .footer {
+    flex-direction: column-reverse;
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+    gap: 8px;
+  }
+
+  .overlay:not(.center) .footer > * {
+    width: 100%;
+  }
+
+  .overlay.bottom {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .overlay.bottom .dialog {
+    height: auto;
+    border-radius: 16px 16px 0 0;
+  }
+
+  .overlay.bottom .body {
+    flex: none;
+    max-height: 70dvh;
+    overflow-y: auto;
+  }
+
+  .center {
+    padding: 16px;
+  }
+
+  .dialog :global(.in) {
+    height: 48px;
+    font-size: 16px;
+  }
+
+  .dialog :global(textarea.in) {
+    height: auto;
+  }
+
+  .dialog :global(.f label),
+  .dialog :global(.flabel) {
+    font-size: 14px;
+  }
+
+  .dialog :global(.chip) {
+    height: 44px;
+    padding: 0 14px;
+    font-size: 14px;
+  }
+
+  .dialog :global(.seg) {
+    display: flex;
+  }
+
+  .dialog :global(.seg button),
+  .dialog :global(.seg a) {
+    flex: 1;
+    height: 44px;
+    font-size: 14px;
+  }
+}

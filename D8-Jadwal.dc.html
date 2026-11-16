@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Jadwal Produksi — Desktop</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="./samaqu.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.sh{border:1px solid var(--ln);border-radius:10px;background:#fff;overflow:clip;box-shadow:var(--sh)}
+.gr{display:grid;grid-template-columns:100px 104px minmax(0,1fr) 118px 76px 140px 150px 128px 32px;align-items:stretch;width:100%;text-align:left;font-size:13px}
+.gr>span{display:flex;align-items:center;gap:6px;padding:0 10px;min-height:42px;border-right:1px solid var(--ln);min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gr>span:last-child{border-right:0;justify-content:center;padding:0;color:var(--ink3)}
+.gr>span.r{justify-content:flex-end}
+.gh{background:var(--sf2);border-bottom:1px solid var(--ln2);font-size:12px;font-weight:600;color:var(--ink3)}
+.gh>span{min-height:34px}
+button.rw{border:0;border-top:1px solid var(--ln);background:#fff;font:inherit;color:inherit;cursor:pointer;padding:0}
+button.rw:first-of-type{border-top:0}
+button.rw:hover{background:rgba(31,85,80,.05)}
+button.rw:hover>span:last-child{color:var(--ac2)}
+.b{height:22px;font-size:12px;padding:0 7px 0 5px}
+.b .i{width:13px;height:13px}
+.pg{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--ink2);font-variant-numeric:tabular-nums;width:100%}
+.pg i{display:block;flex:1;height:6px;border-radius:999px;background:var(--sf3);overflow:hidden}
+.pg i b{display:block;height:100%;background:var(--ac);border-radius:999px}
+.dlg.xl{max-width:1060px}
+.po-h{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:12px 16px;border-radius:10px;background:var(--ink);color:#fff}
+.po-h b{font-size:15px}
+.po-h span{font-size:13px;color:#C9CFCC}
+.sz{border:1px solid var(--ln);border-radius:10px;overflow:hidden;background:#fff}
+.sz-h{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--sf2);border-bottom:1px solid var(--ln)}
+.sz-h .tag{display:inline-flex;align-items:center;justify-content:center;min-width:44px;height:30px;padding:0 10px;border-radius:8px;background:var(--ac);color:#fff;font-weight:800;font-size:14px;letter-spacing:.03em}
+.lp{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) 64px 92px minmax(0,1.1fr) 100px 72px;align-items:center;font-size:13px}
+.lp>span{display:flex;align-items:center;gap:6px;padding:0 10px;min-height:40px;border-top:1px solid var(--ln);border-right:1px solid var(--ln);min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lp>span:last-child{border-right:0}
+.lp>span.c{justify-content:center}
+.lp>span.r{justify-content:flex-end}
+.lp.h>span{border-top:0;min-height:32px;font-size:11.5px;font-weight:600;color:var(--ink3);white-space:normal;line-height:1.2}
+.lp.done>span{background:#F3F8F5}
+.lp input[type=checkbox]{width:20px;height:20px;margin:0;accent-color:#1F5550;cursor:pointer}
+.lp select{height:30px;width:100%;border:1px solid var(--ln2);border-radius:6px;padding:0 6px;font:500 12.5px 'Plus Jakarta Sans',sans-serif;background:#fff;color:var(--ink)}
+.kb{display:grid;grid-template-columns:minmax(0,1fr) 60px minmax(0,1.1fr) 84px 84px minmax(0,1.5fr);align-items:center;font-size:13px}
+.kb>span{padding:9px 10px;border-top:1px solid var(--ln);min-width:0}
+.kb.h>span{border-top:0;background:var(--sf2);font-size:12px;font-weight:600;color:var(--ink3)}
+.kbw{border:1px solid var(--ln);border-radius:10px;overflow:hidden}
+.blk{display:flex;flex-direction:column;gap:14px;padding:18px 20px;border-top:1px solid var(--ln)}
+.bld{display:flex;flex-direction:column;gap:14px;padding:16px;border-radius:12px;background:var(--sf2);border:1px solid var(--ln)}
+.szi{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
+.szi label{display:flex;flex-direction:column;gap:4px;font-size:12px;font-weight:700;color:var(--ink2);text-align:center}
+.szi input{height:42px;text-align:center;font-weight:700;font-variant-numeric:tabular-nums}
+.fl{display:grid;grid-template-columns:90px minmax(0,1fr) minmax(0,1.2fr) 60px 70px 44px;align-items:center;font-size:13px}
+.fl>span{display:flex;align-items:center;gap:6px;padding:0 10px;min-height:38px;border-top:1px solid var(--ln);min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fl.h>span{border-top:0;background:var(--sf2);font-size:12px;font-weight:600;color:var(--ink3);min-height:32px}
+.fl .xb{width:32px;height:32px;border:0;border-radius:6px;background:transparent;color:var(--ink3);display:grid;place-items:center;cursor:pointer}
+.fl .xb:hover{background:var(--nob);color:var(--not)}
+.paper{width:794px;max-width:100%;background:#fff;color:#111;border-radius:4px;box-shadow:0 20px 60px rgba(0,0,0,.35);padding:36px 40px;font-size:12px}
+.paper h1{font-size:18px;font-weight:800;letter-spacing:.04em;margin:0}
+.ph-h{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;padding-bottom:12px;border-bottom:2px solid #111;margin-bottom:14px}
+.ph-h .meta{text-align:right;font-size:12px;line-height:1.5}
+.pt-sz{margin-bottom:12px;border:1px solid #111;break-inside:avoid}
+.pt-sz .t{display:flex;justify-content:space-between;padding:6px 10px;background:#111;color:#fff;font-weight:800;font-size:13px}
+.pr{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1.2fr) 52px 54px minmax(0,1.2fr) 54px;font-size:12px}
+.pr>span{padding:5px 8px;border-top:1px solid #999;border-right:1px solid #999;min-height:24px;display:flex;align-items:center}
+.pr>span:last-child{border-right:0}
+.pr.h>span{border-top:0;font-weight:700;background:#EEE;font-size:11px}
+.pr .c{justify-content:center}
+.pr .r{justify-content:flex-end;font-weight:700}
+.bx{display:inline-block;width:14px;height:14px;border:1.5px solid #111;border-radius:2px}
+.ttd{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-top:28px;text-align:center;font-size:12px}
+.ttd div{padding-top:52px;border-bottom:1px solid #111}
+.pv-bar{position:sticky;top:0;z-index:1;display:flex;gap:10px;justify-content:flex-end;width:794px;max-width:100%;margin-bottom:12px}
+@media print{
+  body *{visibility:hidden !important}
+  .paper,.paper *{visibility:visible !important}
+  .paper{position:absolute;left:0;top:0;width:100%;box-shadow:none;padding:0}
+  .pv-bar{display:none}
+}
+.blk>*,.blk .col>*,.sz,.sz>*,.lr,.hs4{flex-shrink:0}
+.hs4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.hs4>div{border:1px solid var(--ln);border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;gap:2px;background:#fff}
+.hs4 b{font-size:20px}
+.hsr{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) 64px 90px 90px 64px 120px;align-items:center;font-size:13px}
+.hsr>span{display:flex;align-items:center;gap:6px;padding:4px 10px;min-height:42px;min-width:0}
+.hsr>span.r{justify-content:flex-end}
+.hsr.h>span{min-height:32px;font-size:12px;font-weight:600;color:var(--ink3);background:var(--sf2)}
+.hrw{border-top:1px solid var(--ln);flex-shrink:0}
+.hin{height:34px;width:100%;padding:0 8px;text-align:right}
+.hal:not(.hid){display:flex;align-items:center;gap:8px;padding:0 10px 10px 10px;background:#FDF6F5}
+.hal .in{height:34px}
+.hal input{flex:1}.hal select{width:140px}
+.hsr .b{height:22px;font-size:12px}
+.g3m{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+</style>
+</helmet>
+<div class="ui app" style="min-height: 1000px">
+  <input type="checkbox" id="sb" class="sb-t" aria-label="Ciutkan menu samping">
+  <aside class="side">
+    <div class="sb-top"><div class="brand"><b>SAMAQU</b><span>Produksi</span></div><label for="sb" class="sb-btn" title="Ciutkan atau buka menu"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M15 10l-2 2 2 2"/></svg></label></div>
+    <nav class="nav" aria-label="Menu utama">
+      <span class="grp">Stok bahan</span>
+      <a href="D1-Beranda.dc.html" title="Beranda"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg><span class="lb">Beranda</span></a>
+      <a href="D2-Warna.dc.html" title="Katalog Warna"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg><span class="lb">Katalog Warna</span></a>
+      <a href="D3-Material.dc.html" title="Stok Material"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg><span class="lb">Stok Material</span></a>
+      <a href="D4-Mutasi.dc.html" title="Mutasi Stok"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v16M3 8l4-4 4 4M17 20V4M13 16l4 4 4-4"/></svg><span class="lb">Mutasi Stok</span></a>
+      <span class="grp">Produksi</span>
+      <a href="D8-Jadwal.dc.html" class="on" aria-current="page" title="Jadwal Produksi"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M8 14h3"/></svg><span class="lb">Jadwal Produksi</span></a>
+      <a href="D10-Aksesoris.dc.html" title="Pasang Aksesoris"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="8"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2"/></svg><span class="lb">Pasang Aksesoris</span></a>
+      <a href="D9-Bahan.dc.html" title="Bahan per Pcs"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4h6M10 4v5L5 19a1 1 0 0 0 .9 1.5h12.2A1 1 0 0 0 19 19l-5-10V4"/><path d="M7.5 14h9"/></svg><span class="lb">Bahan per Pcs</span></a>
+      <span class="grp">Biaya produksi</span>
+      <a href="D5-Pengeluaran.dc.html" title="Pengeluaran"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h14v18l-3-2-2 2-2-2-2 2-2-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg><span class="lb">Pengeluaran</span></a>
+      <a href="D6-Mesin.dc.html" title="Mesin"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg><span class="lb">Mesin</span></a>
+      <span class="grp">Lainnya</span>
+      <a href="D7-Pengaturan.dc.html" title="Pengaturan"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg><span class="lb">Pengaturan</span></a>
+    </nav>
+    <div class="who"><span class="ava">LE</span><div><div style="font-weight: 600; font-size: 13px">Lea</div><div class="sub" style="font-size: 12px">Admin · bisa input</div></div></div>
+  </aside>
+
+  <main class="main">
+    <div class="top">
+      <div><h1 class="h1">Jadwal Produksi</h1><p class="sub">Satu jadwal = satu PO. Klik PO untuk lihat lembar potong per size dan kebutuhan bahannya.</p></div>
+      <button class="btn btn-p" type="button" onClick="{{bukaBuat}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Buat jadwal</button>
+    </div>
+
+    <div class="sh">
+      <div class="tabs" role="tablist" aria-label="Status jadwal">
+        <sc-for list="{{tabs}}" as="t" hint-placeholder-count="6">
+          <button type="button" role="tab" class="{{t.cls}}" onClick="{{t.pilih}}">{{t.nama}}<span class="n">{{t.n}}</span></button>
+        </sc-for>
+      </div>
+      <div class="gr gh" aria-hidden="true"><span>No. PO</span><span>Tanggal</span><span>Produk</span><span>Varian</span><span class="r">Total</span><span>Sudah dipotong</span><span>Bahan</span><span>Status</span><span></span></div>
+      <sc-for list="{{list}}" as="j" hint-placeholder-count="3">
+        <button type="button" class="gr rw {{j.hid}}" onClick="{{j.buka}}" aria-label="Lihat {{j.no}}">
+          <span><b>{{j.no}}</b></span>
+          <span class="num">{{j.tgl}}</span>
+          <span>{{j.prod}}</span>
+          <span class="sub">{{j.nVar}} baris · {{j.nSize}} size</span>
+          <span class="r num"><b>{{j.qty}}</b>&nbsp;<span class="sub">pcs</span></span>
+          <span><span class="pg"><i><b style="width: {{j.pct}}"></b></i>{{j.potong}}</span></span>
+          <span>
+            <sc-if value="{{j.rOk}}" hint-placeholder-val="{{ true }}"><span class="b b-ok"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>Cukup</span></sc-if>
+            <sc-if value="{{j.rNo}}" hint-placeholder-val="{{ false }}"><span class="b b-no"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3h8l5 5v8l-5 5H8l-5-5V8z"/><path d="m9 9 6 6M15 9l-6 6"/></svg>{{j.ring}}</span></sc-if>
+            <sc-if value="{{j.rNt}}" hint-placeholder-val="{{ false }}"><span class="b b-nt">{{j.ring}}</span></sc-if>
+            <sc-if value="{{j.rDash}}" hint-placeholder-val="{{ false }}"><span style="color: var(--ln3)">—</span></sc-if>
+          </span>
+          <span><span class="{{j.stCls}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="{{j.ico}}"/></svg>{{j.stTeks}}</span></span>
+          <span><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width: 16px; height: 16px"><path d="m9 6 6 6-6 6"/></svg></span>
+        </button>
+      </sc-for>
+    </div>
+    <p class="sub" style="font-size: 12px">PO 26007 diambil dari sheet "2. PRODUKSI SAMAQU" (size XS dan S yang terlihat di foto). Penjahit, PO 26006, dan PO 26008 adalah contoh.</p>
+  </main>
+
+  <sc-if value="{{adaDetail}}" hint-placeholder-val="{{ false }}">
+    <div class="ovl">
+      <div class="dlg xl" role="dialog" aria-modal="true" aria-labelledby="d8-dt">
+        <div class="dlg-h">
+          <div class="row" style="gap: 14px"><div><span class="lbl">Jadwal produksi</span><h2 class="h2" id="d8-dt" style="font-size: 20px">{{d.no}} · {{d.qty}} pcs {{d.prod}}</h2></div><span class="{{d.stCls}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="{{d.ico}}"/></svg>{{d.stTeks}}</span></div>
+          <div class="row" style="gap: 8px">
+            <div class="seg" role="tablist" aria-label="Isi jadwal"><button type="button" role="tab" class="{{d.tPot}}" onClick="{{d.kePotong}}">Lembar potong</button><button type="button" role="tab" class="{{d.tBhn}}" onClick="{{d.keBahan}}">Bahan</button><button type="button" role="tab" class="{{d.tHsl}}" onClick="{{d.keHasil}}">Terima hasil</button></div>
+            <button class="xbtn" type="button" aria-label="Tutup" onClick="{{tutup}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+          </div>
+        </div>
+        <div class="dlg-b" style="padding: 0; gap: 0">
+
+          <sc-if value="{{d.isPotong}}" hint-placeholder-val="{{ true }}">
+            <div class="blk" style="border-top: 0">
+              <div class="po-h"><b>{{d.no}} · {{d.tgl}}</b><sc-if value="{{d.adaKet}}" hint-placeholder-val="{{ true }}"><span>{{d.ket}}</span></sc-if></div>
+              <div class="g2" style="gap: 16px">
+                <div class="col" style="gap: 6px"><span class="lbl">Sudah dipotong</span><span class="pg" style="font-size: 13px"><i><b style="width: {{d.pctPotong}}"></b></i>{{d.dipotong}}/{{d.nVar}} baris</span></div>
+                <div class="col" style="gap: 6px"><span class="lbl">Sudah selesai</span><span class="pg" style="font-size: 13px"><i><b style="width: {{d.pctSelesai}}"></b></i>{{d.selesaiPcs}}/{{d.qty}} pcs</span></div>
+              </div>
+              <sc-for list="{{d.grup}}" as="g" hint-placeholder-count="2">
+                <section class="sz" aria-label="{{g.prod}} size {{g.size}}">
+                  <div class="sz-h"><span class="tag">{{g.size}}</span><b>{{g.prod}}</b><span class="sub">{{g.n}} baris · {{g.total}} pcs</span></div>
+                  <div class="lp h" aria-hidden="true"><span>Warna</span><span>Series</span><span class="r">Jumlah</span><span class="c">Sudah potong</span><span>Penjahit</span><span class="c">Dibayar jahit</span><span class="c">Selesai</span></div>
+                  <sc-for list="{{g.rows}}" as="r" hint-placeholder-count="4">
+                    <div class="lp {{r.rowCls}}">
+                      <span><span class="sw" style="--c: {{r.c}}; width: 14px; height: 14px; border-radius: 4px"></span>{{r.w}} <span class="sub">({{r.k}})</span></span>
+                      <span>{{r.series}}</span>
+                      <span class="r num"><b>{{r.qty}}</b></span>
+                      <span class="c"><input type="checkbox" checked="{{r.potong}}" onChange="{{r.tPotong}}" aria-label="Sudah potong {{r.label}}"></span>
+                      <span><select aria-label="Penjahit {{r.label}}" value="{{r.pj}}" onChange="{{r.pilihPj}}"><option value="">Pilih</option><option>[Penjahit 1]</option><option>[Penjahit 2]</option><option>[Penjahit 3]</option></select></span>
+                      <span class="c"><input type="checkbox" checked="{{r.bayar}}" onChange="{{r.tBayar}}" aria-label="Sudah dibayar jahit {{r.label}}"></span>
+                      <span class="c"><input type="checkbox" checked="{{r.selesai}}" onChange="{{r.tSelesai}}" aria-label="Selesai {{r.label}}"></span>
+                    </div>
+                  </sc-for>
+                </section>
+              </sc-for>
+              <div class="row sp" style="padding: 4px 4px 0"><b>Total</b><b class="num" style="font-size: 18px">{{d.qty}} pcs</b></div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{d.isBahan}}" hint-placeholder-val="{{ false }}">
+            <div class="blk" style="border-top: 0">
+              <div class="note note-in"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8v.01"/></svg><div>{{d.info}}</div></div>
+              <div><h3 class="h3">Bahan yang dibutuhkan</h3><p class="sub">Jumlah tiap baris × Bahan per Pcs produknya, digabung per kode dari Katalog Warna.</p></div>
+              <div class="kbw">
+                <div class="kb h"><span>Bahan</span><span>Kode</span><span>Untuk warna</span><span>Butuh</span><span>Stok</span><span>Keterangan</span></div>
+                <sc-for list="{{d.rows}}" as="r" hint-placeholder-count="4">
+                  <div class="kb"><span style="font-weight: 600">{{r.nama}}</span><span class="code">{{r.kode}}</span><span class="sub" style="font-size: 12.5px">{{r.untuk}}</span><span class="num">{{r.butuh}}</span><span class="num" style="color: var(--ink2)">{{r.stok}}</span>
+                    <span>
+                      <sc-if value="{{r.isOk}}" hint-placeholder-val="{{ true }}"><span class="b b-ok"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>{{r.ket}}</span></sc-if>
+                      <sc-if value="{{r.isWr}}" hint-placeholder-val="{{ false }}"><span class="b b-wr"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 2.5 20h19z"/><path d="M12 10v4M12 17v.01"/></svg>{{r.ket}}</span></sc-if>
+                      <sc-if value="{{r.isNo}}" hint-placeholder-val="{{ false }}"><span class="b b-no"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3h8l5 5v8l-5 5H8l-5-5V8z"/><path d="m9 9 6 6M15 9l-6 6"/></svg>{{r.ket}}</span></sc-if>
+                      <sc-if value="{{r.isNt}}" hint-placeholder-val="{{ false }}"><span class="sub" style="font-size: 12px">{{r.ket}}</span></sc-if>
+                    </span>
+                  </div>
+                </sc-for>
+              </div>
+              <sc-if value="{{d.adaNt}}" hint-placeholder-val="{{ false }}"><p class="sub">Baris abu-abu belum bisa dicek ke stok karena kode pasangannya belum diisi di Katalog Warna atau takarannya belum ada di Bahan per Pcs.</p></sc-if>
+              <sc-if value="{{d.adaKurang}}" hint-placeholder-val="{{ false }}"><div class="note note-no"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3h8l5 5v8l-5 5H8l-5-5V8z"/><path d="m9 9 6 6M15 9l-6 6"/></svg><div>Ada bahan yang kurang. Jadwal tetap bisa disetujui, tapi bahannya perlu dibeli dulu sebelum produksi dimulai.</div></div></sc-if>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{d.isHasil}}" hint-placeholder-val="{{ false }}">
+            <div class="blk" style="border-top: 0">
+              <sc-if value="{{d.hasilBelum}}" hint-placeholder-val="{{ false }}"><p class="sub">Hasil bisa diterima setelah jadwal mulai produksi.</p></sc-if>
+              <sc-if value="{{d.hasilBisa}}" hint-placeholder-val="{{ true }}">
+                <div class="col" style="gap: 14px">
+              <div class="note note-in"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8v.01"/></svg><div>Setiap baris harus cocok: lolos + defect = jumlah di jadwal. Boleh diisi bertahap. Hanya yang lolos yang masuk rak barang jadi.</div></div>
+              <sc-if value="{{d.blok}}" hint-placeholder-val="{{ false }}"><div class="note note-no"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3h8l5 5v8l-5 5H8l-5-5V8z"/><path d="m9 9 6 6M15 9l-6 6"/></svg><div>Belum bisa ditandai selesai. Masih ada selisih {{d.selisih}} pcs. Isi hasil yang belum diterima dulu.</div></div></sc-if>
+              <div class="hs4"><div><span class="lbl">Target</span><b class="num">{{d.qty}}</b></div><div><span class="lbl">Lolos, masuk rak</span><b class="num" style="color: var(--ok)">{{d.tL}}</b></div><div><span class="lbl">Defect</span><b class="num" style="color: var(--no)">{{d.tD}}</b></div><div><span class="lbl">Belum diterima</span><b class="num">{{d.tB}}</b></div></div>
+              <sc-for list="{{d.hgrup}}" as="g" hint-placeholder-count="2">
+                <section class="sz" aria-label="Hasil {{g.prod}} size {{g.size}}">
+                  <div class="sz-h"><span class="tag">{{g.size}}</span><b>{{g.prod}}</b><span class="sub">{{g.total}} pcs</span></div>
+                  <div class="hsr h" aria-hidden="true"><span>Warna</span><span>Series</span><span class="r">Target</span><span>Lolos</span><span>Defect</span><span class="r">Belum</span><span>Status</span></div>
+                  <sc-for list="{{g.rows}}" as="r" hint-placeholder-count="4">
+                    <div class="hrw">
+                      <div class="hsr">
+                        <span><span class="sw" style="--c: {{r.c}}; width: 14px; height: 14px; border-radius: 4px"></span>{{r.w}} <span class="sub">({{r.k}})</span></span>
+                        <span>{{r.series}}</span>
+                        <span class="r num"><b>{{r.qty}}</b></span>
+                        <span><input class="in num hin" inputmode="numeric" value="{{r.l}}" onChange="{{r.isiL}}" aria-label="Lolos {{r.label}}"></span>
+                        <span><input class="in num hin" inputmode="numeric" value="{{r.d}}" onChange="{{r.isiD}}" aria-label="Defect {{r.label}}"></span>
+                        <span class="r num">{{r.belum}}</span>
+                        <span><span class="{{r.stCls}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="{{r.ico}}"/></svg>{{r.stTeks}}</span></span>
+                      </div>
+                      <div class="hal {{r.alCls}}"><span class="sub" style="white-space: nowrap">Alasan defect</span><input class="in" value="{{r.al}}" onChange="{{r.isiAl}}" placeholder="Alasan defect" aria-label="Alasan defect {{r.label}}"><select class="in" value="{{r.nasib}}" onChange="{{r.isiNasib}}" aria-label="Tindak lanjut defect {{r.label}}"><option>Perbaikan</option><option>Reject</option></select></div>
+                    </div>
+                  </sc-for>
+                </section>
+              </sc-for>
+                </div>
+              </sc-if>
+            </div>
+          </sc-if>
+        </div>
+        <div class="dlg-f">
+          <sc-if value="{{d.adaA2}}" hint-placeholder-val="{{ false }}"><button class="btn btn-hapus" type="button" onClick="{{d.a2}}">{{d.a2Teks}}</button></sc-if>
+          <button class="btn btn-s" type="button" onClick="{{bukaCetak}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9V3h12v6M6 18H4v-7h16v7h-2M7 14h10v7H7z"/></svg>Cetak lembar potong</button>
+          <sc-if value="{{d.adaA1}}" hint-placeholder-val="{{ false }}"><button class="btn btn-p" type="button" onClick="{{d.a1}}">{{d.a1Teks}}</button></sc-if>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{buat}}" hint-placeholder-val="{{ false }}">
+    <div class="ovl">
+      <div class="dlg xl" role="dialog" aria-modal="true" aria-labelledby="d8-fb">
+        <div class="dlg-h"><h2 class="h2" id="d8-fb">Buat jadwal produksi</h2><button class="xbtn" type="button" aria-label="Tutup" onClick="{{tutupBuat}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+        <div class="dlg-b">
+          <div style="display: grid; grid-template-columns: 140px 180px minmax(0, 1fr); gap: 12px">
+            <div class="f"><label for="d8-no">No. PO</label><input id="d8-no" class="in" value="PO 26009" readonly style="background: var(--sf2)"></div>
+            <div class="f"><label for="d8-t">Tanggal</label><input id="d8-t" class="in" type="date" value="2026-11-15"></div>
+            <div class="f"><label for="d8-k">Catatan (opsional)</label><input id="d8-k" class="in" value="{{ket}}" onChange="{{isiKet}}" placeholder="Misalnya: Jiharkah kerah bulat, Nahawand kerah kemeja"></div>
+          </div>
+
+          <div class="bld">
+            <h3 class="h3">Tambah varian</h3>
+            <div style="display: grid; grid-template-columns: 160px 200px minmax(0, 1fr); gap: 12px">
+              <div class="f"><label for="d8-p">Jenis produk</label><select id="d8-p" class="in" value="{{fp}}" onChange="{{pilihProd}}"><option>Thobe</option><option>Kandora</option><option>Koko</option><option>Vest</option></select></div>
+              <div class="f"><label for="d8-s">Series</label>
+                <sc-if value="{{isThobe}}" hint-placeholder-val="{{ true }}"><select id="d8-s" class="in" value="{{fs}}" onChange="{{pilihSeries}}"><option>Jiharkah</option><option>Nahawand</option></select></sc-if>
+                <sc-if value="{{isKandora}}" hint-placeholder-val="{{ false }}"><select id="d8-s" class="in" value="{{fs}}" onChange="{{pilihSeries}}"><option>Tanpa series</option></select></sc-if>
+                <sc-if value="{{isLain}}" hint-placeholder-val="{{ false }}"><select id="d8-s" class="in" value="{{fs}}" onChange="{{pilihSeries}}"><option>[nama series]</option></select></sc-if>
+              </div>
+              <div class="f"><label for="d8-w">Kain dan warna</label><select id="d8-w" class="in" value="{{fw}}" onChange="{{pilihWarna}}"><option value="0">Dark Choco · B-01</option><option value="1">Blush Beige · B-01</option><option value="2">Navy · B-01</option><option value="3">Mint · B-01</option><option value="4">Olive Green · B-02</option><option value="5">Coffee Brown · B-02</option><option value="6">Deep Maroon · B-02</option><option value="7">Superblack · B-01</option><option value="8">Broken White · B-01</option><option value="9">Latte · B-01</option></select></div>
+            </div>
+            <div class="col" style="gap: 6px"><span class="flabel">Jumlah per size (pcs)</span>
+              <div class="szi">
+                <label>{{sz0.z}}<input class="in" inputmode="numeric" aria-label="Jumlah size {{sz0.z}}" value="{{sz0.v}}" onChange="{{sz0.isi}}" placeholder="0"></label>
+                <label>{{sz1.z}}<input class="in" inputmode="numeric" aria-label="Jumlah size {{sz1.z}}" value="{{sz1.v}}" onChange="{{sz1.isi}}" placeholder="0"></label>
+                <label>{{sz2.z}}<input class="in" inputmode="numeric" aria-label="Jumlah size {{sz2.z}}" value="{{sz2.v}}" onChange="{{sz2.isi}}" placeholder="0"></label>
+                <label>{{sz3.z}}<input class="in" inputmode="numeric" aria-label="Jumlah size {{sz3.z}}" value="{{sz3.v}}" onChange="{{sz3.isi}}" placeholder="0"></label>
+                <label>{{sz4.z}}<input class="in" inputmode="numeric" aria-label="Jumlah size {{sz4.z}}" value="{{sz4.v}}" onChange="{{sz4.isi}}" placeholder="0"></label>
+                <label>{{sz5.z}}<input class="in" inputmode="numeric" aria-label="Jumlah size {{sz5.z}}" value="{{sz5.v}}" onChange="{{sz5.isi}}" placeholder="0"></label>
+              </div>
+              <span class="hint">Isi size yang diproduksi saja. Setiap size jadi satu baris di lembar potong.</span>
+            </div>
+            <div class="row"><button class="btn btn-p" type="button" onClick="{{tambah}}" aria-disabled="{{tidakBisaTambah}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Tambahkan ke jadwal</button><sc-if value="{{tidakBisaTambah}}" hint-placeholder-val="{{ true }}"><span class="sub">Isi minimal satu size dulu.</span></sc-if></div>
+          </div>
+
+          <div class="col" style="gap: 8px">
+            <div class="row sp"><h3 class="h3">Isi jadwal</h3><span class="sub">{{flN}} baris · <b style="color: var(--ink)">{{flTotal}} pcs</b></span></div>
+            <sc-if value="{{kosongFl}}" hint-placeholder-val="{{ true }}"><p class="sub" style="padding: 18px; text-align: center; border: 1.5px dashed var(--ln2); border-radius: 10px">Belum ada varian. Pilih produk, series, warna, dan isi jumlah per size di atas.</p></sc-if>
+            <sc-if value="{{adaFl}}" hint-placeholder-val="{{ false }}">
+              <div class="kbw">
+                <div class="fl h"><span>Produk</span><span>Series</span><span>Warna</span><span>Size</span><span>Jumlah</span><span></span></div>
+                <sc-for list="{{fl}}" as="x" hint-placeholder-count="3">
+                  <div class="fl"><span>{{x.prod}}</span><span>{{x.series}}</span><span><span class="sw" style="--c: {{x.c}}; width: 14px; height: 14px; border-radius: 4px"></span>{{x.w}} <span class="sub">({{x.k}})</span></span><span><b>{{x.size}}</b></span><span class="num"><b>{{x.qty}}</b></span><span><button class="xb" type="button" aria-label="Hapus baris {{x.w}} {{x.size}}" onClick="{{x.hapus}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width: 16px; height: 16px"><path d="m6 6 12 12M18 6 6 18"/></svg></button></span></div>
+                </sc-for>
+              </div>
+              <p class="sub">Di lembar potong, baris-baris ini otomatis dikelompokkan per size.</p>
+            </sc-if>
+          </div>
+        </div>
+        <div class="dlg-f"><span class="sub" style="margin-right: auto">Disimpan sebagai Draft dulu. Stok baru dicadangkan setelah disetujui.</span><button class="btn btn-s" type="button" onClick="{{tutupBuat}}">Batal</button><button class="btn btn-p" type="button" onClick="{{simpan}}">Simpan sebagai draft</button></div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{cetak}}" hint-placeholder-val="{{ false }}">
+    <div class="ovl ctr" style="z-index: 7; align-items: flex-start; overflow-y: auto; padding: 24px; background: rgba(29,35,33,.7); flex-direction: column; align-content: center">
+      <div class="pv-bar" style="align-self: center"><span style="margin-right: auto; color: #fff; font-weight: 600; align-self: center">Pratinjau lembar potong</span><button class="btn btn-s" type="button" onClick="{{tutupCetak}}">Tutup</button><button class="btn btn-p" type="button" onClick="{{cetakSekarang}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9V3h12v6M6 18H4v-7h16v7h-2M7 14h10v7H7z"/></svg>Cetak</button></div>
+      <article class="paper" style="align-self: center" aria-label="Lembar potong {{d.no}}">
+        <div class="ph-h">
+          <div><div style="font-size: 11px; font-weight: 700; letter-spacing: .2em">SAMAQU</div><h1>LEMBAR POTONG</h1><div style="margin-top: 4px">{{d.ket}}</div></div>
+          <div class="meta"><b style="font-size: 15px">{{d.no}}</b><br>Tanggal: {{d.tgl}}<br>Total: <b>{{d.qty}} pcs</b> · {{d.nVar}} baris</div>
+        </div>
+        <sc-for list="{{d.grup}}" as="g" hint-placeholder-count="2">
+          <section class="pt-sz">
+            <div class="t"><span>{{g.prod}} · SIZE {{g.size}}</span><span>{{g.total}} pcs</span></div>
+            <div class="pr h"><span>Warna (kain)</span><span>Series</span><span class="r">Jumlah</span><span class="c">Potong</span><span>Penjahit</span><span class="c">Selesai</span></div>
+            <sc-for list="{{g.rows}}" as="r" hint-placeholder-count="4">
+                <div class="pr"><span>{{r.w}} ({{r.k}})</span><span>{{r.series}}</span><span class="r">{{r.qty}}</span><span class="c"><i class="bx"></i></span><span></span><span class="c"><i class="bx"></i></span></div>
+            </sc-for>
+          </section>
+        </sc-for>
+        <div style="display: flex; justify-content: flex-end; gap: 12px; font-size: 14px; padding: 4px 2px"><span>TOTAL</span><b>{{d.qty}} pcs</b></div>
+        <div class="ttd"><div>Dibuat oleh</div><div>Diterima bagian potong</div><div>Diperiksa</div></div>
+      </article>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":1000}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { tab: 'semua', sel: null, dtab: 'potong', buat: false, st: {}, cek: {}, pj: {}, baru: [],
+fp: 'Thobe', fs: 'Jiharkah', fw: 0, q: {}, lines: [], ket: '' };
+}
+renderVals() {
+const s = this.state || {};
+const SIZES = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
+const SERIES = { Thobe: ['Jiharkah', 'Nahawand'], Kandora: ['Tanpa series'], Koko: ['[nama series]'], Vest: ['[nama series]'] };
+const SLOT = [['Benang Jahit', 'cone'], ['Benang Obras', 'cone'], ['Benang Tarboosh', 'cone'], ['Resleting Jepang', 'pcs'], ['Kancing Manset', 'pcs']];
+const BPP = { Thobe: [0.1, 0.05, 0, 1, 6], Kandora: [0.1, 0.05, null, 2, null], Koko: [null, null, 0, null, null], Vest: [null, null, 0, null, null] };
+const W = [
+{ n: 'Dark Choco', k: 'B-01', c: '#4A3428', p: [null, null, null, null, null] },
+{ n: 'Blush Beige', k: 'B-01', c: '#E4CBB8', p: [null, null, null, null, null] },
+{ n: 'Navy', k: 'B-01', c: '#1F2A44', p: [null, null, null, null, null] },
+{ n: 'Mint', k: 'B-01', c: '#BFDCCB', p: [null, null, null, null, null] },
+{ n: 'Olive Green', k: 'B-02', c: '#6B6B3A', p: [null, null, null, null, null] },
+{ n: 'Coffee Brown', k: 'B-02', c: '#6F4E37', p: [null, null, null, null, null] },
+{ n: 'Deep Maroon', k: 'B-02', c: '#6B2030', p: [null, null, null, null, null] },
+{ n: 'Superblack', k: 'B-01', c: '#17171A', p: ['722', null, null, '722', '322'] },
+{ n: 'Broken White', k: 'B-01', c: '#EFE9DC', p: ['Bw', null, null, '502', '002'] },
+{ n: 'Latte', k: 'B-01', c: '#B79877', p: ['172', null, null, '697', '503'], cad: ['069', null, null, null, null] }
+];
+const STOK = { '0:722': 24, '0:Bw': 18, '0:172': 0, '0:069': 14, '3:722': 120, '3:502': 32, '3:697': 85, '4:322': 864, '4:002': 576, '4:503': 0 };
+const fmt = (x) => String(Math.round(x * 100) / 100).replace('.', ',');
+const L = (prod, series, w, size, qty) => ({ prod: prod, series: series, w: w, size: size, qty: qty });
+const PO0 = [
+{ no: 'PO 26008', tgl: '13 Nov 2026', ket: 'Kandora untuk stok akhir tahun', st: 'draft', lines: [
+L('Kandora', 'Tanpa series', 7, 'M', 10), L('Kandora', 'Tanpa series', 7, 'L', 10), L('Kandora', 'Tanpa series', 8, 'M', 8), L('Kandora', 'Tanpa series', 8, 'L', 6)] },
+{ no: 'PO 26007', tgl: '30 Okt 2026', ket: 'Jiharkah (kerah bulat) · Nahawand (kerah kemeja)', st: 'jalan', lines: [
+L('Thobe', 'Jiharkah', 0, 'XS', 5), L('Thobe', 'Nahawand', 0, 'XS', 5), L('Thobe', 'Jiharkah', 1, 'XS', 5), L('Thobe', 'Nahawand', 1, 'XS', 5),
+L('Thobe', 'Jiharkah', 2, 'XS', 5), L('Thobe', 'Nahawand', 2, 'XS', 6), L('Thobe', 'Nahawand', 3, 'XS', 4), L('Thobe', 'Jiharkah', 4, 'XS', 5),
+L('Thobe', 'Nahawand', 4, 'XS', 5), L('Thobe', 'Jiharkah', 5, 'XS', 2), L('Thobe', 'Nahawand', 5, 'XS', 5), L('Thobe', 'Jiharkah', 6, 'XS', 2),
+L('Thobe', 'Nahawand', 6, 'XS', 2),
+L('Thobe', 'Jiharkah', 0, 'S', 9), L('Thobe', 'Nahawand', 0, 'S', 9), L('Thobe', 'Jiharkah', 1, 'S', 9), L('Thobe', 'Nahawand', 1, 'S', 9),
+L('Thobe', 'Jiharkah', 2, 'S', 14), L('Thobe', 'Nahawand', 2, 'S', 9), L('Thobe', 'Jiharkah', 4, 'S', 9), L('Thobe', 'Nahawand', 4, 'S', 9),
+L('Thobe', 'Jiharkah', 5, 'S', 4), L('Thobe', 'Nahawand', 5, 'S', 6), L('Thobe', 'Jiharkah', 6, 'S', 5)] },
+{ no: 'PO 26006', tgl: '14 Okt 2026', ket: '', st: 'selesai', lines: [
+L('Thobe', 'Jiharkah', 9, 'M', 12), L('Thobe', 'Nahawand', 9, 'L', 10), L('Kandora', 'Tanpa series', 8, 'L', 2)] }
+];
+const ov = s.st || {}; const cek = s.cek || {}; const pj = s.pj || {};
+const PO = (s.baru || []).concat(PO0);
+const STT = { draft: ['Draft', 'b b-nt'], setuju: ['Dicadangkan', 'b b-jd'], jalan: ['Berjalan', 'b b-run'], selesai: ['Selesai', 'b b-ok'], batal: ['Batal', 'b b-nt'] };
+const ICO = { draft: 'M4 20h4L19 9l-4-4L4 16z', setuju: 'M6 3h12v18l-6-4-6 4z', jalan: 'M8 5v14l11-7z', selesai: 'm5 12 5 5 9-10', batal: 'm6 6 12 12M18 6 6 18' };
+const INFO = {
+draft: 'Masih draft, belum memengaruhi stok.',
+setuju: 'Bahan sudah dicadangkan: masih di rak, tapi tidak bisa dipakai jadwal lain.',
+jalan: 'Bahan sudah keluar dari stok dan tercatat di Mutasi Stok sebagai "Keluar ke produksi".',
+selesai: 'Produksi selesai. Sisa bahan bisa dikembalikan lewat Mutasi Stok.',
+batal: 'Jadwal dibatalkan. Bahan yang sempat dicadangkan sudah dilepas lagi.'
+};
+const total = (ls) => ls.reduce((a, x) => a + x.qty, 0);
+const prodTeks = (ls) => Array.from(new Set(ls.map((x) => x.prod))).join(', ');
+const hitung = (ls, st) => {
+const map = {}; const order = [];
+ls.forEach((ln) => {
+const per = BPP[ln.prod] || BPP.Thobe; const w = W[ln.w];
+SLOT.forEach((sl, i) => {
+const t = per[i]; if (t === 0) return;
+const kode = t === null ? '#takaran' : (w.p[i] || '#kode');
+const key = i + '|' + kode;
+if (!map[key]) { map[key] = { i: i, nama: sl[0], sat: sl[1], kode: kode, need: 0, warna: [], prod: [] }; order.push(key); }
+const m = map[key]; m.need += (t || 0) * ln.qty;
+if (m.warna.indexOf(w.n) < 0) m.warna.push(w.n);
+if (m.prod.indexOf(ln.prod) < 0) m.prod.push(ln.prod);
+});
+});
+const rows = order.map((key) => {
+const m = map[key];
+const r = { nama: m.nama, kode: '—', butuh: '—', stok: '—', untuk: m.warna.length > 3 ? m.warna.length + ' warna' : m.warna.join(', '), ket: '', isOk: false, isWr: false, isNo: false, isNt: false };
+if (m.kode === '#takaran') { r.ket = 'Takaran ' + m.prod.join(', ') + ' belum diisi di Bahan per Pcs'; r.isNt = true; return r; }
+r.butuh = fmt(m.need) + ' ' + m.sat;
+if (m.kode === '#kode') { r.ket = 'Kode belum diisi di Katalog Warna'; r.isNt = true; return r; }
+r.kode = m.kode;
+if (st === 'jalan' || st === 'selesai') { r.ket = 'Sudah keluar dari stok'; r.isOk = true; return r; }
+if (st === 'batal') { r.ket = 'Tidak dipakai'; r.isNt = true; return r; }
+const sisa = STOK[m.i + ':' + m.kode] || 0; r.stok = fmt(sisa) + ' ' + m.sat;
+if (sisa >= m.need) { r.isOk = true; r.ket = 'Cukup'; return r; }
+const wcad = W.find((w) => w.p[m.i] === m.kode && w.cad && w.cad[m.i]);
+const cad = wcad ? wcad.cad[m.i] : null; const cs = cad ? (STOK[m.i + ':' + cad] || 0) : 0;
+if (cad && cs >= m.need - sisa) { r.isWr = true; r.ket = 'Utama habis, pakai cadangan ' + cad; }
+else { r.isNo = true; r.ket = 'Kurang ' + fmt(m.need - sisa) + ' ' + m.sat; }
+return r;
+});
+const kurang = rows.filter((x) => x.isNo).length, nt = rows.filter((x) => x.isNt).length;
+return { rows: rows, kurang: kurang, nt: nt, ring: kurang ? 'Kurang ' + kurang + ' bahan' : (nt ? nt + ' belum lengkap' : 'Bahan cukup'), rOk: !kurang && !nt, rNo: kurang > 0, rNt: !kurang && nt > 0 };
+};
+const tab = s.tab || 'semua';
+const setSt = (no, st) => () => { const o = Object.assign({}, ov); o[no] = st; this.setState({ st: o }); };
+const list = PO.map((po) => {
+const st = ov[po.no] || po.st; const h = hitung(po.lines, st);
+const dipotong = po.lines.filter((x, i) => (cek[po.no + i] || {}).potong).length;
+const aktif = st === 'draft' || st === 'setuju';
+return {
+no: po.no, tgl: po.tgl, prod: prodTeks(po.lines), qty: total(po.lines), nVar: po.lines.length,
+nSize: Array.from(new Set(po.lines.map((x) => x.size))).length,
+potong: dipotong + '/' + po.lines.length, pct: Math.round(dipotong / Math.max(1, po.lines.length) * 100) + '%',
+stTeks: STT[st][0], stCls: STT[st][1], ico: ICO[st], st: st,
+ring: aktif ? h.ring : '—', rOk: aktif && h.rOk, rNo: aktif && h.rNo, rNt: aktif && h.rNt, rDash: !aktif,
+hid: (tab === 'semua' || tab === st) ? '' : 'hid',
+buka: () => this.setState({ sel: po.no, dtab: 'potong' })
+};
+});
+const TABS = [['semua', 'Semua'], ['draft', 'Draft'], ['setuju', 'Dicadangkan'], ['jalan', 'Berjalan'], ['selesai', 'Selesai'], ['batal', 'Batal']];
+const tabs = TABS.map((t) => ({ nama: t[1], n: t[0] === 'semua' ? list.length : list.filter((x) => x.st === t[0]).length, cls: tab === t[0] ? 'on' : '', chip: 'chip' + (tab === t[0] ? ' on' : ''), pilih: () => this.setState({ tab: t[0] }) }));
+const po = PO.find((x) => x.no === s.sel);
+let d = { grup: [], rows: [] };
+if (po) {
+const st = ov[po.no] || po.st; const h = hitung(po.lines, st);
+const tog = (key, f) => () => { const c = Object.assign({}, cek); const v = Object.assign({}, c[key] || {}); v[f] = !v[f]; c[key] = v; this.setState({ cek: c }); };
+const grup = [];
+Array.from(new Set(po.lines.map((x) => x.prod))).forEach((prod) => {
+SIZES.forEach((sz) => {
+const idx = []; po.lines.forEach((x, i) => { if (x.prod === prod && x.size === sz) idx.push(i); });
+if (!idx.length) return;
+const rows = idx.map((i) => {
+const x = po.lines[i]; const w = W[x.w]; const key = po.no + i; const c = cek[key] || {};
+return { w: w.n, k: w.k, c: w.c, series: x.series === 'Tanpa series' ? '—' : x.prod + ' ' + x.series, qty: x.qty,
+potong: !!c.potong, bayar: !!c.bayar, selesai: !!c.selesai,
+tPotong: tog(key, 'potong'), tBayar: tog(key, 'bayar'), tSelesai: tog(key, 'selesai'),
+pj: pj[key] || '', pilihPj: (e) => { const p = Object.assign({}, pj); p[key] = e.target.value; this.setState({ pj: p }); },
+label: w.n + ' ' + x.series + ' size ' + sz, rowCls: c.selesai ? 'done' : '' };
+});
+grup.push({ prod: prod, size: sz, n: rows.length, total: rows.reduce((a, r) => a + r.qty, 0), rows: rows });
+});
+});
+const A = {
+draft: [['Setujui dan cadangkan bahan', setSt(po.no, 'setuju')], ['Batalkan jadwal', setSt(po.no, 'batal')]],
+setuju: [['Mulai produksi', setSt(po.no, 'jalan')], ['Batalkan jadwal', setSt(po.no, 'batal')]],
+jalan: [['Tandai selesai', setSt(po.no, 'selesai')], null], selesai: [null, null], batal: [null, null]
+}[st];
+const hs = s.hs || {};
+const H0 = (no, i, x) => {
+if (no === 'PO 26006') return i === 0 ? { l: x.qty - 1, d: 1, al: 'Jahitan kerah miring', nasib: 'Perbaikan' } : { l: x.qty, d: 0, al: '', nasib: 'Perbaikan' };
+if (no === 'PO 26007' && x.size === 'XS') return i === 0 ? { l: 4, d: 1, al: 'Noda di bagian depan', nasib: 'Reject' } : (i === 5 ? { l: 4, d: 0, al: '', nasib: 'Perbaikan' } : { l: x.qty, d: 0, al: '', nasib: 'Perbaikan' });
+return { l: 0, d: 0, al: '', nasib: 'Perbaikan' };
+};
+let tL = 0, tD = 0, tB = 0, tLebih = 0;
+const hgrup = [];
+Array.from(new Set(po.lines.map((x) => x.prod))).forEach((prod) => SIZES.forEach((sz) => {
+const hr = [];
+po.lines.forEach((x, i) => {
+if (x.prod !== prod || x.size !== sz) return;
+const key = po.no + i; const h = Object.assign(H0(po.no, i, x), hs[key] || {}); const w = W[x.w];
+const l = parseInt(h.l, 10) || 0; const dd = parseInt(h.d, 10) || 0; const b = x.qty - l - dd;
+tL += l; tD += dd; if (b > 0) tB += b; if (b < 0) tLebih += -b;
+const set = (f) => (e) => { const n = Object.assign({}, hs); const v = Object.assign({}, h); v[f] = (f === 'al' || f === 'nasib') ? e.target.value : e.target.value.replace(/[^0-9]/g, ''); n[key] = v; this.setState({ hs: n }); };
+hr.push({ w: w.n, k: w.k, c: w.c, series: x.series === 'Tanpa series' ? '—' : x.series, qty: x.qty, l: String(h.l), d: String(h.d), al: h.al, nasib: h.nasib,
+isiL: set('l'), isiD: set('d'), isiAl: set('al'), isiNasib: set('nasib'), belum: Math.max(0, b), alCls: dd > 0 ? '' : 'hid',
+stCls: b === 0 ? 'b b-ok' : (b > 0 ? 'b b-wr' : 'b b-no'), stTeks: b === 0 ? 'Cocok' : (b > 0 ? 'Kurang ' + b : 'Lebih ' + (-b)),
+ico: b === 0 ? 'm5 12 5 5 9-10' : 'M12 9v4M12 17h.01M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6A2 2 0 0 0 22 18L13.7 3.9a2 2 0 0 0-3.4 0z',
+label: w.n + ' ' + x.series + ' size ' + sz });
+});
+if (hr.length) hgrup.push({ prod: prod, size: sz, total: hr.reduce((a, r) => a + r.qty, 0), rows: hr });
+}));
+const hasilBisa = st === 'jalan' || st === 'selesai';
+const selisih = tB + tLebih;
+const dip = po.lines.filter((x, i) => (cek[po.no + i] || {}).potong).length;
+const sel = po.lines.filter((x, i) => (cek[po.no + i] || {}).selesai).reduce((a, x) => a + x.qty, 0);
+d = {
+no: po.no, tgl: po.tgl, ket: po.ket, adaKet: !!po.ket, prod: prodTeks(po.lines), qty: total(po.lines), nVar: po.lines.length,
+stTeks: STT[st][0], stCls: STT[st][1], ico: ICO[st], info: INFO[st], grup: grup, rows: h.rows,
+dipotong: dip, pctPotong: Math.round(dip / Math.max(1, po.lines.length) * 100) + '%', selesaiPcs: sel, pctSelesai: Math.round(sel / Math.max(1, total(po.lines)) * 100) + '%',
+adaKurang: (st === 'draft' || st === 'setuju') && h.kurang > 0, adaNt: h.nt > 0,
+adaA1: !!A[0], a1Teks: A[0] ? A[0][0] : '', a1: A[0] ? ((st === 'jalan' && selisih > 0) ? () => this.setState({ dtab: 'hasil', blok: true }) : A[0][1]) : null,
+hgrup: hgrup, hasilBisa: hasilBisa, hasilBelum: !hasilBisa, tL: tL, tD: tD, tB: tB, selisih: selisih, adaSelisih: selisih > 0, cocokSemua: hasilBisa && selisih === 0,
+blok: !!s.blok && selisih > 0, pctHasil: Math.round((tL + tD) / Math.max(1, total(po.lines)) * 100) + '%', diterima: tL + tD,
+isHasil: s.dtab === 'hasil', tHsl: s.dtab === 'hasil' ? 'on' : '', keHasil: () => this.setState({ dtab: 'hasil' }),
+adaA2: !!A[1], a2Teks: A[1] ? A[1][0] : '', a2: A[1] ? A[1][1] : null,
+isPotong: (s.dtab || 'potong') === 'potong', isBahan: s.dtab === 'bahan',
+tPot: (s.dtab || 'potong') === 'potong' ? 'on' : '', tBhn: s.dtab === 'bahan' ? 'on' : '',
+keBahan: () => this.setState({ dtab: 'bahan', blok: false }), kePotong: () => this.setState({ dtab: 'potong', blok: false })
+};
+}
+// form buat jadwal
+const fp = s.fp || 'Thobe'; const ser = SERIES[fp]; const fs = ser.indexOf(s.fs) >= 0 ? s.fs : ser[0];
+const q = s.q || {}; const lines = s.lines || [];
+const qtyAda = SIZES.some((z) => parseInt(q[z], 10) > 0);
+const sizeIn = SIZES.map((z) => ({ z: z, v: q[z] || '', isi: (e) => { const n = Object.assign({}, q); n[z] = e.target.value.replace(/[^0-9]/g, ''); this.setState({ q: n }); } }));
+const tambah = () => {
+const add = SIZES.filter((z) => parseInt(q[z], 10) > 0).map((z) => L(fp, fs, s.fw || 0, z, parseInt(q[z], 10)));
+this.setState({ lines: lines.concat(add), q: {} });
+};
+const fl = lines.map((x, i) => ({ prod: x.prod, series: x.series, w: W[x.w].n, k: W[x.w].k, c: W[x.w].c, size: x.size, qty: x.qty,
+hapus: () => this.setState({ lines: lines.filter((y, j) => j !== i) }) }));
+const pv = hitung(lines, 'draft');
+return {
+list: list, tabs: tabs,
+adaDetail: !!po, d: d, tutup: () => this.setState({ sel: null }),
+cetak: !!s.cetak && !!po, bukaCetak: () => this.setState({ cetak: true }), tutupCetak: () => this.setState({ cetak: false }),
+cetakSekarang: () => { try { window.print(); } catch (e) {} },
+buat: !!s.buat, bukaBuat: () => this.setState({ buat: true, lines: [], q: {} }), tutupBuat: () => this.setState({ buat: false }),
+fp: fp, fs: fs, fw: String(s.fw || 0), seriesOpt: ser.map((x) => ({ x: x })),
+pilihProd: (e) => this.setState({ fp: e.target.value, fs: SERIES[e.target.value][0] }),
+pilihSeries: (e) => this.setState({ fs: e.target.value }),
+pilihWarna: (e) => this.setState({ fw: parseInt(e.target.value, 10) }),
+sizeIn: sizeIn, sz0: sizeIn[0], sz1: sizeIn[1], sz2: sizeIn[2], sz3: sizeIn[3], sz4: sizeIn[4], sz5: sizeIn[5],
+isThobe: fp === 'Thobe', isKandora: fp === 'Kandora', isLain: fp === 'Koko' || fp === 'Vest', bisaTambah: qtyAda, tidakBisaTambah: !qtyAda, tambah: tambah,
+fl: fl, adaFl: fl.length > 0, kosongFl: fl.length === 0, flTotal: total(lines), flN: lines.length,
+pv: pv,
+simpan: () => {
+if (!lines.length) return;
+const baru = (s.baru || []).slice();
+baru.unshift({ no: 'PO ' + (26009 + baru.length), tgl: '15 Nov 2026', ket: s.ket || '', st: 'draft', lines: lines });
+this.setState({ buat: false, baru: baru, tab: 'semua', lines: [] });
+},
+isiKet: (e) => this.setState({ ket: e.target.value }), ket: s.ket || ''
+};
+}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,532 @@
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.search {
+  width: 300px;
+}
+
+.viewToggle {
+  margin-left: auto;
+}
+
+.segLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mobileFilters {
+  display: none;
+}
+
+.actionsRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.sheet {
+  border: 1px solid var(--ln);
+  border-radius: 10px;
+  background: #fff;
+  overflow: clip;
+  box-shadow: var(--sh);
+}
+
+.gridHead,
+.gridRow {
+  display: grid;
+  align-items: stretch;
+  width: 100%;
+  text-align: left;
+  font-size: 13px;
+}
+
+.gridHead {
+  position: sticky;
+  top: -28px;
+  z-index: 2;
+  background: var(--sf2);
+  border-bottom: 1px solid var(--ln2);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink3);
+}
+
+.gridHead > span,
+.gridRow > span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 8px;
+  min-height: 36px;
+  border-right: 1px solid var(--ln);
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.gridHead > span {
+  min-height: 38px;
+  white-space: normal;
+  line-height: 1.2;
+}
+
+.gridHead > span:last-child,
+.gridRow > span:last-child {
+  border-right: 0;
+  justify-content: center;
+  padding: 0;
+  color: var(--ink3);
+}
+
+.gridRow {
+  border: 0;
+  border-top: 1px solid var(--ln);
+  background: #fff;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+}
+
+.gridRow:hover {
+  background: rgba(31, 85, 80, 0.05);
+}
+
+.gridRow:hover > span:last-child {
+  color: var(--ac2);
+}
+
+.badge {
+  height: 22px;
+  font-size: 11.5px;
+  padding: 0 6px 0 4px;
+  gap: 3px;
+}
+
+.badge :global(.i) {
+  width: 12px;
+  height: 12px;
+}
+
+.mini {
+  font-weight: 600;
+}
+
+.cardGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cardList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.groupHead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0 0;
+}
+
+.groupHead b {
+  display: inline-flex;
+  align-items: center;
+  height: 30px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.groupHead span {
+  font-size: 13px;
+  color: var(--ink3);
+}
+
+.colorCard {
+  display: grid;
+  gap: 10px;
+  align-items: stretch;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--ln);
+  border-radius: 14px;
+  background: #fff;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  box-shadow: var(--sh);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.colorCard:hover {
+  border-color: #bfd3cf;
+  box-shadow: var(--sh2);
+}
+
+.colorInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  padding-right: 6px;
+}
+
+.colorInfoText {
+  min-width: 0;
+}
+
+.colorInfoText b {
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.colorInfoText small {
+  display: block;
+  margin-top: 2px;
+  font-family: var(--font-jetbrains), "JetBrains Mono", ui-monospace, monospace;
+  font-size: 12px;
+  color: var(--ink3);
+}
+
+.colorInfoText small.plain {
+  font-family: inherit;
+}
+
+.pairingCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 6px;
+  min-width: 0;
+  min-height: 99px;
+  padding: 10px;
+  border-radius: 10px;
+  background: var(--sf2);
+  border: 1px solid var(--ln);
+}
+
+.pairingLabel {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ink3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pairingCode {
+  font-size: 16px;
+  font-weight: 500;
+  font-family: var(--font-jetbrains), "JetBrains Mono", ui-monospace, monospace;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.pairingStatus {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11.5px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.pairingStatus :global(.i) {
+  width: 13px;
+  height: 13px;
+  stroke-width: 2.2;
+}
+
+.pairingOk .pairingStatus {
+  color: var(--ok);
+}
+
+.pairingWarn {
+  background: #fcf1d2;
+  border-color: #e5c46e;
+}
+
+.pairingWarn .pairingStatus,
+.pairingWarn .pairingCode {
+  color: var(--wr);
+}
+
+.pairingNo {
+  background: var(--nob);
+  border-color: #e2b9b4;
+}
+
+.pairingNo .pairingStatus,
+.pairingNo .pairingCode {
+  color: var(--not);
+}
+
+.pairingEmpty {
+  background: transparent;
+  border: 1.5px dashed var(--ln2);
+}
+
+.pairingEmpty .pairingCode {
+  color: var(--ln3);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.strike {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.desktopOnly {
+  display: block;
+}
+
+.mobileList {
+  display: none;
+}
+
+.mobileCard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+}
+
+.mobileHead {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.mobileHeadText {
+  min-width: 0;
+  flex: 1;
+}
+
+.mobileHeadText b {
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.mobileSub {
+  display: block;
+}
+
+.mobileSummary {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.mobilePairs {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobilePair {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 0;
+  border-top: 1px solid var(--ln);
+}
+
+.mobilePairTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.mobilePairCode {
+  font-size: 13px;
+}
+
+.bodyFlush.bodyFlush {
+  padding: 0;
+  gap: 0;
+}
+
+.detailBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px 20px;
+  border-top: 1px solid var(--ln);
+}
+
+.detailBlock:first-child {
+  border-top: 0;
+}
+
+.detailActions {
+  display: flex;
+  gap: 10px;
+}
+
+.detailActions > * {
+  flex: 1;
+}
+
+.detailPair {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 4px 12px;
+  align-items: center;
+  padding: 10px 0;
+  border-top: 1px solid var(--ln);
+}
+
+.detailPair:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.detailPairName {
+  font-weight: 600;
+}
+
+.photo {
+  width: 88px;
+  height: 88px;
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 0;
+  border: 1px dashed var(--ln3);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink2);
+  font: 500 12px var(--font-jakarta), system-ui, sans-serif;
+}
+
+.formTop {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.formPairHead {
+  display: grid;
+  grid-template-columns: 124px minmax(0, 1fr) minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+}
+
+.formPairRow {
+  display: grid;
+  grid-template-columns: 124px minmax(0, 1fr) minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+}
+
+.pairingLabelText {
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.error {
+  color: var(--no);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+@media (max-width: 799px) {
+  .toolbar {
+    gap: 8px;
+  }
+
+  .search {
+    width: 100%;
+  }
+
+  .viewToggle {
+    display: none;
+  }
+
+  .actionsRow {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .desktopOnly {
+    display: none;
+  }
+
+  .mobileFilters {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .mobileList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .detailBlock {
+    padding: 16px;
+  }
+
+  .detailActions {
+    flex-direction: column;
+  }
+
+  .formTop {
+    flex-direction: column;
+  }
+
+  .photo {
+    width: 100%;
+    height: 72px;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  .formPairHead {
+    display: none;
+  }
+
+  .formPairRow {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  .pairingLabelText {
+    grid-column: 1 / -1;
+  }
+}

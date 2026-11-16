@@ -1,0 +1,171 @@
+.wrap {
+  min-width: 0;
+}
+
+.emptyWrap {
+  border: 1px solid var(--ln);
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: var(--sh);
+}
+
+.desktop {
+  border: 1px solid var(--ln);
+  border-radius: 10px;
+  background: #fff;
+  overflow: clip;
+  box-shadow: var(--sh);
+}
+
+.headerRow {
+  display: grid;
+  align-items: stretch;
+  position: sticky;
+  top: -28px;
+  z-index: 2;
+  background: var(--sf2);
+  border-bottom: 1px solid var(--ln2);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink3);
+}
+
+.row {
+  display: grid;
+  align-items: stretch;
+  width: 100%;
+  text-align: left;
+  font-size: 13px;
+  border-top: 1px solid var(--ln);
+  background: #fff;
+  color: inherit;
+  text-decoration: none;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.clickable:hover {
+  background: rgba(31, 85, 80, 0.05);
+}
+
+.clickable:hover .chevron {
+  color: var(--ac2);
+}
+
+.cell {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 10px;
+  min-height: 36px;
+  border-right: 1px solid var(--ln);
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.headerRow .cell {
+  min-height: 38px;
+  white-space: normal;
+  line-height: 1.2;
+}
+
+.cell:last-child {
+  border-right: 0;
+}
+
+.right {
+  justify-content: flex-end;
+}
+
+.center {
+  justify-content: center;
+}
+
+.chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink3);
+}
+
+.cards {
+  display: none;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px 16px;
+  background: #fff;
+  border: 1px solid var(--ln);
+  border-radius: 12px;
+  color: inherit;
+  text-decoration: none;
+  box-shadow: var(--sh);
+}
+
+.cardTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.cardTitle {
+  font-weight: 600;
+  font-size: 15px;
+  min-width: 0;
+}
+
+.cardBadges {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.cardSubtitle {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--ink3);
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 2px;
+}
+
+.metaRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 12.5px;
+}
+
+@media (max-width: 799px) {
+  .desktop {
+    display: none;
+  }
+
+  .cards {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .wrap {
+    border: 0;
+    box-shadow: none;
+  }
+}

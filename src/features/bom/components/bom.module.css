@@ -1,0 +1,308 @@
+.tabsCard {
+  overflow: clip;
+}
+
+.sectionHead {
+  padding: 20px;
+  padding-bottom: 12px;
+}
+
+.seriesGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 120px minmax(0, 1fr) minmax(0, 1.3fr) 80px;
+  align-items: center;
+  font-size: 13px;
+}
+
+.seriesGrid > span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 12px;
+  min-height: 44px;
+  border-top: 1px solid var(--ln);
+  min-width: 0;
+}
+
+.seriesGrid.head > span {
+  min-height: 34px;
+  border-top: 0;
+  background: var(--sf2);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink3);
+}
+
+.seriesGrid input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  accent-color: #1f5550;
+}
+
+.seriesEmpty {
+  padding: 0 20px 20px;
+}
+
+.matrixCard {
+  overflow: clip;
+}
+
+.matrixHeadWrap {
+  overflow-x: auto;
+}
+
+.matrixInner {
+  width: 100%;
+}
+
+.matrixHead,
+.matrixRow {
+  display: grid;
+  align-items: stretch;
+  font-size: 13px;
+}
+
+.matrixHead > span,
+.matrixRow > span,
+.matrixRow > button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  min-height: 44px;
+  border-top: 1px solid var(--ln);
+  border-right: 1px solid var(--ln);
+  min-width: 0;
+}
+
+.matrixHead > span:last-child,
+.matrixRow > *:last-child {
+  border-right: 0;
+}
+
+.matrixHead > span {
+  border-top: 0;
+  min-height: 40px;
+  background: var(--sf2);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink2);
+}
+
+.matrixGroup {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+  padding: 0 12px;
+  background: #fbfaf8;
+  border-top: 1px solid var(--ln);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink2);
+}
+
+.matrixRow > button.cell {
+  border-left: 0;
+  border-bottom: 0;
+  background: #fff;
+  font: inherit;
+  font-size: 13px;
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  line-height: 1.35;
+}
+
+.matrixRow > button.cell:hover {
+  background: rgba(31, 85, 80, 0.05);
+}
+
+.matrixRow > button.beda {
+  background: #eaf2f0;
+  color: var(--ac2);
+  font-weight: 600;
+}
+
+.matrixRow > button.isi {
+  color: var(--ink2);
+}
+
+.matrixRow > button.no {
+  color: var(--ink3);
+  font-style: italic;
+}
+
+.pola {
+  font-size: 11.5px;
+  height: 22px;
+  padding: 0 8px;
+}
+
+.matrixHint {
+  padding: 12px 20px;
+  border-top: 1px solid var(--ln);
+  font-size: 12px;
+}
+
+.seriesName {
+  font-weight: 700;
+}
+
+.seriesSub {
+  color: var(--ink3);
+  font-size: 12px;
+}
+
+.accessoryText {
+  color: var(--ink2);
+  font-size: 12.5px;
+}
+
+.mobileLabel {
+  display: none;
+}
+
+.desktopSeries {
+  display: block;
+}
+
+.mobileSeries {
+  display: none;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.checkboxRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  border: 1px solid var(--ln);
+  border-radius: 10px;
+  padding: 12px;
+  cursor: pointer;
+}
+
+.checkboxRow input {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  accent-color: #1f5550;
+  flex: none;
+}
+
+.sizeRows {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sizeRow {
+  display: grid;
+  grid-template-columns: 60px minmax(0, 1fr) 80px;
+  gap: 8px;
+  align-items: center;
+}
+
+.sizeLabel {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink2);
+}
+
+@media (max-width: 799px) {
+  .sectionHead {
+    padding: 16px;
+    padding-bottom: 10px;
+  }
+
+  .seriesGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .seriesGrid.head {
+    display: none;
+  }
+
+  .seriesGrid > span {
+    border-top: 1px solid var(--ln);
+    padding: 8px 16px;
+    min-height: 0;
+    width: 100%;
+  }
+
+  .seriesGrid > span:first-child {
+    border-top: 0;
+    padding-top: 14px;
+  }
+
+  .seriesGrid > span:last-child {
+    padding-bottom: 14px;
+    border-bottom: 0;
+  }
+
+  .mobileLabel {
+    display: inline;
+    color: var(--ink3);
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .seriesEmpty {
+    padding: 0 16px 16px;
+  }
+
+  .desktopSeries {
+    display: none;
+  }
+
+  .mobileSeries {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobileSeriesRow {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 16px;
+    border-top: 1px solid var(--ln);
+  }
+
+  .mobileSeriesMain {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .mobileSeriesMain b {
+    font-size: 14px;
+  }
+
+  .mobileSeriesMeta {
+    margin-top: 2px;
+    font-size: 12.5px;
+    color: var(--ink3);
+    line-height: 1.45;
+  }
+
+  .matrixHint {
+    padding: 12px 16px;
+  }
+
+  .formGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .matrixHead > span,
+  .matrixRow > span,
+  .matrixRow > button {
+    padding: 8px 10px;
+  }
+}

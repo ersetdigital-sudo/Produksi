@@ -1,0 +1,15 @@
+.tabbar {
+  display: none;
+}
+
+@media (max-width: 799px) {
+  .tabbar {
+    display: grid;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 30;
+    padding-bottom: calc(12px + env(safe-area-inset-bottom));
+  }
+}

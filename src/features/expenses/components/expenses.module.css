@@ -1,0 +1,180 @@
+.summaryCard {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 24px;
+  padding: 20px;
+  align-items: start;
+}
+
+.summaryLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.totalValue {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 2px 0 4px;
+}
+
+.summaryRight {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+}
+
+.stackedBar {
+  display: flex;
+  height: 10px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: var(--sf3);
+  width: 100%;
+}
+
+.stackedBar > i {
+  display: block;
+  height: 100%;
+}
+
+.legend {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px 16px;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  padding: 6px 8px;
+  margin: 0;
+  border-radius: 8px;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+}
+
+.legendItem:hover {
+  background: var(--sf2);
+}
+
+.legendItemActive {
+  background: var(--acs);
+  color: var(--ac2);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  flex: none;
+}
+
+.legendName {
+  flex: 1;
+  min-width: 0;
+}
+
+.legendAmount {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.legendPct {
+  color: var(--ink3);
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.headerRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.filterNote {
+  font-size: 13px;
+  color: var(--ink3);
+  padding: 0 20px 12px;
+}
+
+.filterNote button {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: var(--ac2);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.rowGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 80px 110px 120px 40px;
+  gap: 8px;
+  align-items: center;
+}
+
+.rowHead {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink3);
+}
+
+.rowFoot {
+  grid-column: 1 / -1;
+  font-size: 12px;
+  margin-top: -2px;
+}
+
+.materialSelect {
+  min-width: 0;
+}
+
+@media (max-width: 799px) {
+  .summaryCard {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .legend {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .rowGrid {
+    grid-template-columns: minmax(0, 1fr) 80px;
+    gap: 10px;
+  }
+
+  .rowGrid > :nth-child(3),
+  .rowGrid > :nth-child(4) {
+    grid-column: span 2;
+  }
+
+  .rowGrid .removeRow {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+  }
+
+  .rowGrid {
+    position: relative;
+    padding-right: 40px;
+  }
+}

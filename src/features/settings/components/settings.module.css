@@ -1,0 +1,182 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  align-items: start;
+}
+
+.bannerRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+.bannerText {
+  flex: 1 1 420px;
+  min-width: 0;
+}
+
+.bannerAction {
+  flex: none;
+}
+
+.settingRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 52px;
+  padding: 8px 20px;
+  border-top: 1px solid var(--ln);
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 20px;
+  padding-bottom: 14px;
+}
+
+.sectionToggle {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.sectionTitleBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.sectionChevron {
+  display: none;
+  color: var(--ink3);
+  margin-top: 2px;
+}
+
+.sectionBody {
+  display: flex;
+  flex-direction: column;
+}
+
+.typeSectionBody {
+  max-height: 264px;
+  overflow-y: auto;
+}
+
+.grip {
+  color: var(--ink3);
+}
+
+.rowText {
+  min-width: 0;
+  flex: 1;
+}
+
+.rowText b {
+  display: block;
+  font-size: 14px;
+}
+
+.checkboxRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  border: 1px solid var(--ln);
+  border-radius: 10px;
+  padding: 12px;
+  cursor: pointer;
+}
+
+.checkboxRow input {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  accent-color: #1f5550;
+  flex: none;
+}
+
+.conversionRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.conversionRow .in {
+  min-width: 0;
+}
+
+.conversionNumber {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.hapus {
+  margin-right: auto;
+}
+
+@media (max-width: 799px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .bannerRow {
+    padding: 16px;
+    align-items: flex-start;
+  }
+
+  .bannerAction {
+    width: 100%;
+  }
+
+  .bannerAction > * {
+    width: 100%;
+  }
+
+  .settingRow {
+    padding: 6px 16px;
+    min-height: 56px;
+  }
+
+  .sectionHeader {
+    padding: 16px;
+    padding-bottom: 12px;
+  }
+
+  .sectionChevron {
+    display: inline;
+  }
+
+  .sectionBody[data-open="false"] {
+    display: none;
+  }
+
+  .sectionHeader[data-open="false"] .addButton {
+    display: none;
+  }
+
+  .typeSectionBody {
+    max-height: none;
+    overflow: visible;
+  }
+
+  .conversionRow {
+    flex-wrap: wrap;
+  }
+}

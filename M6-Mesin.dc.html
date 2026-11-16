@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Mesin — Mobile</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="./samaqu.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.mc{display:flex;align-items:center;gap:12px;width:100%;min-height:68px;padding:12px 12px 12px 16px;border:0;border-top:1px solid var(--ln);background:#fff;font:inherit;color:inherit;text-align:left;cursor:pointer}
+.mc:first-child{border-top:0}
+.blk{display:flex;flex-direction:column;gap:12px;padding:16px;border-top:1px solid var(--ln)}
+</style>
+</helmet>
+<div class="ui m" style="width: 390px; min-height: 1000px; position: relative">
+  <header class="mtop"><h1 class="h1">Biaya</h1></header>
+  <div class="mbody">
+    <div class="seg" role="tablist" aria-label="Bagian biaya"><a href="M5-Pengeluaran.dc.html">Pengeluaran</a><a class="on" href="M6-Mesin.dc.html" aria-current="page">Mesin</a></div>
+    <p class="sub">{{jml}} mesin · {{jmlAktif}} aktif · {{jmlRusak}} rusak. Ketuk mesin untuk lihat riwayatnya.</p>
+    <div class="card" style="overflow: hidden">
+      <sc-for list="{{mesin}}" as="m" hint-placeholder-count="4">
+        <button type="button" class="mc" onClick="{{m.buka}}" aria-label="Lihat detail {{m.nama}}">
+          <span class="grow" style="display: flex; flex-direction: column; gap: 2px">
+            <b>{{m.nama}}</b>
+            <span class="sub">Service terakhir: {{m.terakhir}}</span>
+          </span>
+          <span style="display: flex; flex-direction: column; align-items: flex-end; gap: 4px">
+            <sc-if value="{{m.isAktif}}" hint-placeholder-val="{{ true }}"><span class="b b-ok"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>Aktif</span></sc-if>
+            <sc-if value="{{m.isRusak}}" hint-placeholder-val="{{ false }}"><span class="b b-no"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3h8l5 5v8l-5 5H8l-5-5V8z"/><path d="m9 9 6 6M15 9l-6 6"/></svg>Rusak</span></sc-if>
+            <b class="num" style="font-size: 13px">{{m.total}}</b>
+          </span>
+          <svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--ink3)"><path d="m9 6 6 6-6 6"/></svg>
+        </button>
+      </sc-for>
+    </div>
+  </div>
+
+  <div class="mfoot">
+    <div class="mact"><button class="btn btn-p btn-lg" type="button" onClick="{{bukaTambah}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Tambah mesin</button></div>
+    <nav class="tabbar" aria-label="Menu utama">
+      <a href="M1-Beranda.dc.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Beranda</a>
+      <a href="M2-Warna.dc.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>Stok</a>
+      <a href="M8-Jadwal.dc.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M8 14h3"/></svg>Produksi</a>
+      <a href="M5-Pengeluaran.dc.html" class="on" aria-current="page"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h14v18l-3-2-2 2-2-2-2 2-2-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg>Biaya</a>
+      <a href="M7-Pengaturan.dc.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg>Pengaturan</a>
+    </nav>
+  </div>
+
+  <sc-if value="{{adaDetail}}" hint-placeholder-val="{{ false }}">
+    <div class="ovl full">
+      <div class="dlg" role="dialog" aria-modal="true" aria-labelledby="m6-dt">
+        <div class="dlg-h" style="padding: 10px 8px 10px 16px"><div class="grow"><span class="lbl">Detail mesin</span><h2 class="h2" id="m6-dt" style="font-size: 18px">{{d.nama}}</h2></div><button class="xbtn" type="button" aria-label="Tutup" onClick="{{tutupDetail}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+        <div class="dlg-b" style="padding: 0; gap: 0">
+          <div class="blk" style="border-top: 0">
+            <div class="row sp">
+              <div><div class="lbl">Total biaya service</div><div class="num" style="font-size: 26px; font-weight: 700; letter-spacing: -.02em">{{d.total}}</div><div class="sub">{{d.jmlSvc}} catatan</div></div>
+              <sc-if value="{{d.isAktif}}" hint-placeholder-val="{{ true }}"><span class="b b-ok"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>Aktif</span></sc-if>
+              <sc-if value="{{d.isRusak}}" hint-placeholder-val="{{ false }}"><span class="b b-no"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3h8l5 5v8l-5 5H8l-5-5V8z"/><path d="m9 9 6 6M15 9l-6 6"/></svg>Rusak</span></sc-if>
+            </div>
+            <div>
+              <div class="kv" style="border-top: 0"><span class="sub">Jenis</span><span>{{d.jenis}}</span></div>
+              <div class="kv"><span class="sub">Merk</span><span class="ph">[merk mesin]</span></div>
+              <div class="kv"><span class="sub">Tahun beli</span><span class="ph">[tahun beli]</span></div>
+            </div>
+          </div>
+          <div class="blk">
+            <h3 class="h3">Riwayat service</h3>
+            <sc-if value="{{d.belumSvc}}" hint-placeholder-val="{{ false }}"><p class="sub">Belum pernah diservice.</p></sc-if>
+            <sc-if value="{{d.adaSvc}}" hint-placeholder-val="{{ true }}">
+              <div class="tl">
+                <sc-for list="{{d.svc}}" as="e" hint-placeholder-count="2">
+                  <div class="ev">
+                    <div class="row sp"><b>{{e.ket}}</b><b class="num">{{e.jml}}</b></div>
+                    <div class="sub">{{e.tgl}} · {{e.kat}}</div>
+                    <sc-if value="{{e.nota}}" hint-placeholder-val="{{ false }}"><button class="btn btn-g" type="button" style="padding: 0; height: 44px" onClick="{{e.lihat}}">Lihat foto nota</button></sc-if>
+                    <sc-if value="{{e.tanpaNota}}" hint-placeholder-val="{{ true }}"><div class="sub">Tanpa nota</div></sc-if>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-if>
+          </div>
+        </div>
+        <div class="dlg-f" style="padding: 12px 16px; gap: 8px"><button class="btn btn-p btn-lg" type="button" onClick="{{bukaService}}">Catat service</button><button class="btn btn-s" type="button" style="height: 48px" onClick="{{mintaStatus}}">{{d.tombolStatus}}</button></div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{drService}}" hint-placeholder-val="{{ false }}">
+    <div class="ovl bot" style="z-index: 6">
+      <div class="dlg" role="dialog" aria-modal="true" aria-labelledby="m6-fs">
+        <div class="dlg-h"><h2 class="h2" id="m6-fs">Catat service</h2><button class="xbtn" type="button" aria-label="Tutup" onClick="{{tutupForm}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+        <div class="dlg-b" style="padding: 16px">
+          <div class="f"><label for="m6-sm">Mesin</label><select id="m6-sm" class="in" value="{{mesinPilih}}"><option>Mesin Obras 1</option><option>Mesin Jahit 1</option><option>Mesin Jahit 2</option><option>Mesin Lubang Kancing</option></select></div>
+          <div class="f"><label for="m6-sj">Biaya (Rp)</label><input id="m6-sj" class="in num" inputmode="numeric" pattern="[0-9]*" placeholder="0" style="font-weight: 700"></div>
+          <div class="f"><label for="m6-sn">Apa yang dikerjakan</label><textarea id="m6-sn" class="in" rows="2" placeholder="Misalnya: ganti pisau dan setel"></textarea></div>
+          <button class="btn btn-s" type="button" style="height: 48px; border-style: dashed; border-color: var(--ln3)"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>Foto nota (opsional)</button>
+          <p class="sub">Otomatis ikut tercatat di Pengeluaran.</p>
+        </div>
+        <div class="dlg-f" style="padding: 12px 16px; gap: 8px"><button class="btn btn-g" type="button" style="height: 44px" onClick="{{tutupForm}}">Batal</button><button class="btn btn-p btn-lg" type="button" onClick="{{tutupForm}}">Simpan service</button></div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{drTambah}}" hint-placeholder-val="{{ false }}">
+    <div class="ovl bot">
+      <div class="dlg" role="dialog" aria-modal="true" aria-labelledby="m6-ft">
+        <div class="dlg-h"><h2 class="h2" id="m6-ft">Tambah mesin</h2><button class="xbtn" type="button" aria-label="Tutup" onClick="{{tutupForm}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+        <div class="dlg-b" style="padding: 16px">
+          <div class="f"><label for="m6-tn">Nama mesin</label><input id="m6-tn" class="in" placeholder="Misalnya: Mesin Jahit 3"></div>
+          <div class="f"><label for="m6-tj">Jenis mesin</label><select id="m6-tj" class="in"><option>Jahit</option><option>Obras</option><option>Lubang kancing</option><option>Lainnya</option></select></div>
+          <div class="f"><label for="m6-tm">Merk (opsional)</label><input id="m6-tm" class="in" placeholder="Merk mesin"></div>
+        </div>
+        <div class="dlg-f" style="padding: 12px 16px; gap: 8px"><button class="btn btn-g" type="button" style="height: 44px" onClick="{{tutupForm}}">Batal</button><button class="btn btn-p btn-lg" type="button" onClick="{{tutupForm}}">Tambah mesin</button></div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{konfirm}}" hint-placeholder-val="{{ false }}">
+    <div class="ovl ctr" style="padding: 16px">
+      <div class="dlg" role="alertdialog" aria-modal="true" aria-labelledby="m6-kj">
+        <div class="dlg-b" style="padding: 20px 16px 16px">
+          <h2 class="h2" id="m6-kj">{{k.judul}}</h2>
+          <p style="color: var(--ink2)">{{k.teks}}</p>
+        </div>
+        <div class="dlg-f" style="padding: 0 16px 16px; flex-direction: column-reverse; gap: 8px">
+          <button class="btn btn-s" type="button" style="height: 48px; width: 100%" onClick="{{batalStatus}}">Batal</button>
+          <sc-if value="{{k.keRusak}}" hint-placeholder-val="{{ true }}"><button class="btn btn-d" type="button" style="height: 48px; width: 100%" onClick="{{yaStatus}}">Tandai rusak</button></sc-if>
+          <sc-if value="{{k.keAktif}}" hint-placeholder-val="{{ false }}"><button class="btn btn-p" type="button" style="height: 48px; width: 100%" onClick="{{yaStatus}}">Tandai aktif</button></sc-if>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{adaNota}}" hint-placeholder-val="{{ false }}">
+    <div class="ovl ctr" style="padding: 16px">
+      <div class="dlg" role="dialog" aria-modal="true" aria-labelledby="m6-nt">
+        <div class="dlg-h"><h2 class="h2" id="m6-nt">Foto nota</h2><button class="xbtn" type="button" aria-label="Tutup" onClick="{{tutupNota}}"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+        <div class="dlg-b" style="padding: 16px">
+          <div role="img" aria-label="Tempat foto nota" style="height: 300px; border: 1px dashed var(--ln3); border-radius: 12px; background: var(--sf2); display: grid; place-items: center"><span class="ph">[foto nota]</span></div>
+          <p class="sub">{{n.ket}} · {{n.tgl}} · <b style="color: var(--ink)">{{n.jml}}</b></p>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1000}}'>
+class Component extends DCLogic {
+constructor(props) { super(props); this.state = { sel: null, dr: null, konf: false, nota: null, flip: {} }; }
+renderVals() {
+const s = this.state || {};
+const flip = s.flip || {};
+const M = [
+{ nama: 'Mesin Obras 1', jenis: 'Obras', rusak: false, total: 'Rp 500.000', svc: [
+{ ket: 'Ganti pisau dan setel', tgl: '9 Nov 2026', kat: 'Service mesin', jml: 'Rp 350.000', nota: true },
+{ ket: 'Service rutin', tgl: '12 Okt 2026', kat: 'Service mesin', jml: 'Rp 150.000', nota: false }] },
+{ nama: 'Mesin Jahit 1', jenis: 'Jahit', rusak: false, total: 'Rp 300.000', svc: [
+{ ket: 'Service rutin', tgl: '3 Nov 2026', kat: 'Service mesin', jml: 'Rp 300.000', nota: true }] },
+{ nama: 'Mesin Jahit 2', jenis: 'Jahit', rusak: false, total: 'Rp 240.000', svc: [
+{ ket: 'Sepatu dan jarum', tgl: '6 Nov 2026', kat: 'Sparepart', jml: 'Rp 240.000', nota: false }] },
+{ nama: 'Mesin Lubang Kancing', jenis: 'Lubang kancing', rusak: true, total: 'Rp 0', svc: [] }
+];
+const list = M.map((m, i) => {
+const rusak = flip[i] ? !m.rusak : m.rusak;
+return {
+i: i, nama: m.nama, jenis: m.jenis, isAktif: !rusak, isRusak: rusak, total: m.total,
+terakhir: m.svc.length ? m.svc[0].tgl : 'belum pernah', jmlSvc: m.svc.length,
+adaSvc: m.svc.length > 0, belumSvc: m.svc.length === 0,
+tombolStatus: rusak ? 'Tandai aktif lagi' : 'Tandai rusak',
+svc: m.svc.map((e) => ({ ...e, tanpaNota: !e.nota, lihat: () => this.setState({ nota: e }) })),
+buka: () => this.setState({ sel: i })
+};
+});
+const d = s.sel === null || s.sel === undefined ? null : list[s.sel];
+const k = d ? (d.isRusak
+? { judul: 'Tandai ' + d.nama + ' sudah aktif lagi?', teks: 'Mesin ini akan kembali bisa dipakai dan statusnya jadi Aktif.', keRusak: false, keAktif: true }
+: { judul: 'Tandai ' + d.nama + ' rusak?', teks: 'Mesin ini ditandai tidak bisa dipakai sampai diperbaiki. Riwayat service-nya tetap tersimpan.', keRusak: true, keAktif: false })
+: { judul: '', teks: '', keRusak: false, keAktif: false };
+const aktif = list.filter((m) => m.isAktif).length;
+return {
+mesin: list, jml: list.length, jmlAktif: aktif, jmlRusak: list.length - aktif,
+adaDetail: !!d, d: d || { svc: [] },
+tutupDetail: () => this.setState({ sel: null }),
+mesinPilih: d ? d.nama : 'Mesin Obras 1',
+drService: s.dr === 'service', drTambah: s.dr === 'tambah',
+bukaService: () => this.setState({ dr: 'service' }),
+bukaTambah: () => this.setState({ dr: 'tambah' }),
+tutupForm: () => this.setState({ dr: null }),
+konfirm: !!s.konf && !!d, k: k,
+mintaStatus: () => this.setState({ konf: true }),
+batalStatus: () => this.setState({ konf: false }),
+yaStatus: () => { const f = Object.assign({}, flip); f[s.sel] = !f[s.sel]; this.setState({ flip: f, konf: false }); },
+adaNota: !!s.nota, n: s.nota || {},
+tutupNota: () => this.setState({ nota: null })
+};
+}
+}
+</script>
+</body>
+</html>

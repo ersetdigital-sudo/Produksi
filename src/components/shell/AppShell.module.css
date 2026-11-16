@@ -1,0 +1,95 @@
+.app {
+  min-width: 0;
+}
+
+.main {
+  min-width: 0;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  min-width: 0;
+}
+
+@media (max-width: 799px) {
+  .main {
+    padding: 0;
+    min-height: 100dvh;
+  }
+
+  .page {
+    gap: 16px;
+    padding-bottom: calc(88px + env(safe-area-inset-bottom));
+    font-size: 15px;
+  }
+
+  .page > :not(header) {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .page :global(.h1) {
+    font-size: 22px;
+  }
+
+  .page :global(.in) {
+    height: 48px;
+    font-size: 16px;
+  }
+
+  .page :global(textarea.in) {
+    height: auto;
+  }
+
+  .page :global(.chip) {
+    height: 44px;
+    padding: 0 14px;
+    font-size: 14px;
+  }
+
+  .page :global(.seg) {
+    display: flex;
+  }
+
+  .page :global(.seg button),
+  .page :global(.seg a) {
+    height: 44px;
+    font-size: 14px;
+  }
+
+  .page :global(.f label),
+  .page :global(.flabel) {
+    font-size: 14px;
+  }
+
+  .page :global(.btn-sm) {
+    height: 44px;
+    padding: 0 14px;
+  }
+
+  .page :global(.li) {
+    padding: 12px 16px;
+    min-height: 60px;
+  }
+
+  .page :global(.pad) {
+    padding: 16px;
+  }
+
+  .page :global(.g4) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .page :global(.g3) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .page :global(.g2) {
+    gap: 12px;
+  }
+}

@@ -1,0 +1,85 @@
+.card {
+  min-width: 0;
+}
+
+.statValue {
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+.statValueCompact {
+  font-size: 24px;
+  line-height: 1.4;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.sectionHeaderTitles {
+  min-width: 0;
+}
+
+.sectionHeaderActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.empty {
+  align-items: center;
+  text-align: center;
+  gap: 6px;
+  padding: 40px 16px;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 20px;
+}
+
+.legendItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--ink2);
+  white-space: nowrap;
+}
+
+.progress {
+  width: 100%;
+}
+
+.kvList {
+  display: flex;
+  flex-direction: column;
+}
+
+.swatch {
+  display: inline-block;
+  flex: none;
+  border-radius: 8px;
+  background-color: var(--c);
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  background-image: repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.07) 0 1px,
+      transparent 1px 3px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(0, 0, 0, 0.06) 0 1px,
+      transparent 1px 3px
+    );
+}

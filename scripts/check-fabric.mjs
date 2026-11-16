@@ -1,0 +1,10 @@
+import { Pool } from "pg";
+process.loadEnvFile(".env.local");
+const url = new URL(process.env.DATABASE_URL);
+url.searchParams.delete("sslmode");
+const pool = new Pool({ connectionString: url.toString(), ssl: { rejectUnauthorized: false }, max: 1 });
+const fabrics = await pool.query(`select * from fabric_types order by 1`);
+console.log(JSON.stringify(fabrics.rows, null, 2));
+const sample = await pool.query(`select c.name, c.color_code, f.name as fabric from colors c join fabric_types f on f.id = c.fabric_type_id order by c.sort_order limit 6`);
+console.log(JSON.stringify(sample.rows, null, 2));
+await pool.end();

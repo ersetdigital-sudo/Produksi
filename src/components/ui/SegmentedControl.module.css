@@ -1,0 +1,14 @@
+.seg {
+  flex-wrap: wrap;
+}
+
+@media (max-width: 799px) {
+  .seg {
+    display: inline-flex;
+  }
+
+  .seg > * {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
