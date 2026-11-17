@@ -1,7 +1,9 @@
 # SAMAQU Produksi
 
-Dashboard produksi dan stok bahan SAMAQU. Dibangun dari mockup di folder ini
-(`D*.dc.html`, `M*.dc.html`, `samaqu.css`).
+Dashboard produksi dan stok bahan SAMAQU. Dibangun dari mockup desain
+(`D6-Mesin.dc.html` dan `M6-Mesin.dc.html` masih disimpan sebagai acuan untuk
+halaman Mesin yang belum dikerjakan; mockup halaman lain sudah dikonversi dan
+dihapus).
 
 ## Stack
 
@@ -54,7 +56,7 @@ dengan CA pinning.
 berdampingan dengan hasil aplikasi.
 
 ```bash
-node scripts/render-mockup.mjs D2-Warna.dc.html <output.html>
+node scripts/render-mockup.mjs D6-Mesin.dc.html <output.html>
 ```
 
 ## Struktur

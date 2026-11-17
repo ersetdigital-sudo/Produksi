@@ -9,7 +9,7 @@ if (!input || !output) {
 
 const root = process.cwd();
 const source = fs.readFileSync(path.resolve(root, input), "utf8");
-const samaqu = fs.readFileSync(path.resolve(root, "samaqu.css"), "utf8");
+const samaqu = fs.readFileSync(path.resolve(root, "src/app/samaqu.css"), "utf8");
 
 const helmet = source.match(/<helmet>([\s\S]*?)<\/helmet>/)?.[1] ?? "";
 const markupStart = source.indexOf('<div class="ui');

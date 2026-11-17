@@ -2,8 +2,10 @@
 
 Ini MOCKUP desain, bukan kode produksi. File .dc.html berisi markup (template dengan {{hole}}) + CSS + logika contoh (class Component di bagian bawah). Pakai sebagai acuan tampilan, istilah, dan alur. Semua angka adalah data contoh; teks [dalam kurung siku] = placeholder yang belum ada datanya.
 
+Mockup halaman yang sudah dikonversi ke Next.js sudah dihapus dari repo. Yang tersisa hanya `D6-Mesin.dc.html` dan `M6-Mesin.dc.html`, karena halaman Mesin belum dibangun. Semua mockup lama masih bisa diambil dari commit `4e8324d`.
+
 ## Halaman (D = desktop 1280, M = mobile 390)
-- Main: riset warna & sistem desain (token warna ada di samaqu.css :root)
+- Main: riset warna & sistem desain (token warna ada di src/app/samaqu.css :root)
 - 1 Beranda · 2 Katalog Warna · 3 Stok Material · 4 Mutasi Stok
 - 5 Pengeluaran (+ M5b form catat) · 6 Mesin · 7 Pengaturan
 - 8 Jadwal Produksi (tab Lembar potong / Bahan / Terima hasil, cetak lembar potong)
