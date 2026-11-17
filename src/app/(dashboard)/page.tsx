@@ -105,27 +105,7 @@ export default async function BerandaPage() {
 
   return (
     <>
-      <PageHeader
-        title="Beranda"
-        subtitle={formatTodaySubtitle()}
-        actions={
-          <Link className="btn btn-p" href="/mutasi?drawer=keluar">
-            <svg className="i" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 19V5M6 11l6-6 6 6" />
-            </svg>
-            Catat barang keluar
-          </Link>
-        }
-      />
-
-      <div className={`row ${styles.mobileHeroAction}`} style={{ marginTop: -4 }}>
-        <Link className="btn btn-p btn-lg" href="/mutasi?drawer=keluar" style={{ width: "100%" }}>
-          <svg className="i" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 19V5M6 11l6-6 6 6" />
-          </svg>
-          Catat barang keluar
-        </Link>
-      </div>
+      <PageHeader title="Beranda" subtitle={formatTodaySubtitle()} />
 
       <div className="g4">
         <StatCard

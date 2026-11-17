@@ -55,17 +55,9 @@
   display: block;
 }
 
-.mobileHeroAction {
-  display: none;
-}
-
 @media (max-width: 799px) {
   .twoCol {
     grid-template-columns: minmax(0, 1fr);
-  }
-
-  .mobileHeroAction {
-    display: flex;
   }
 
   .desktopAttention {
