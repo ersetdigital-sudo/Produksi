@@ -1,6 +1,8 @@
 .overlay {
   position: fixed;
   inset: 0;
+  /* Di atas tab bar mobile (z-index 30), supaya footer drawer tidak tertutup. */
+  z-index: 40;
 }
 
 .dialog {

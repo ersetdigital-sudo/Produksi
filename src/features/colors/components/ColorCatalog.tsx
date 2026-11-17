@@ -9,10 +9,10 @@ import {
   EmptyState,
   Legend,
   LegendItem,
+  Swatch,
 } from "@/components/ui/primitives";
 import { SegmentedControl } from "@/components/ui/SegmentedControl";
 import { Tabs } from "@/components/ui/Tabs";
-import { ColorThumb } from "./ColorThumb";
 import { StatusBadge } from "@/components/ui/badges";
 import {
   colorSummaryLabel,
@@ -341,11 +341,10 @@ export function ColorCatalog({ data }: { data: ColorCatalogData }) {
                       : color.colorCode}
                   </span>
                   <span>
-                    <ColorThumb
-                      hex={color.hex}
-                      photoUrl={color.photoUrl}
-                      name={color.name}
+                    <Swatch
+                      color={color.hex}
                       size={14}
+                      label={`Warna kain ${color.name}`}
                     />
                     {color.name}
                   </span>
@@ -402,12 +401,11 @@ export function ColorCatalog({ data }: { data: ColorCatalogData }) {
                           aria-label={`Lihat detail ${color.name} ${color.fabricCode} ${color.colorCode}`}
                         >
                           <div className={styles.colorInfo}>
-                            <ColorThumb
-                              hex={color.hex}
-                              photoUrl={color.photoUrl}
-                              name={color.name}
+                            <Swatch
+                              color={color.hex}
                               size={72}
                               radius={10}
+                              label={`Warna kain ${color.name}`}
                             />
                             <div className={styles.colorInfoText}>
                               <b>{color.name}</b>
@@ -462,12 +460,11 @@ export function ColorCatalog({ data }: { data: ColorCatalogData }) {
                   onClick={() => toggleExpanded(color.id)}
                   aria-expanded={isOpen}
                 >
-                  <ColorThumb
-                    hex={color.hex}
-                    photoUrl={color.photoUrl}
-                    name={color.name}
+                  <Swatch
+                    color={color.hex}
                     size={56}
                     radius={8}
+                    label={`Warna kain ${color.name}`}
                   />
                   <span className={styles.mobileHeadText}>
                     <b>{color.name}</b>

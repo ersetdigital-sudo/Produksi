@@ -24,7 +24,6 @@ export async function saveColor(input: unknown): Promise<ActionResult> {
   }
 
   const data = parsed.data;
-  const photoPath = data.photoPath ?? null;
 
   try {
     await db.transaction(async (tx) => {
@@ -37,7 +36,7 @@ export async function saveColor(input: unknown): Promise<ActionResult> {
             name: data.name,
             fabricTypeId: data.fabricTypeId,
             colorCode: data.colorCode,
-            photoPath,
+            hex: data.hex,
           })
           .where(eq(colors.id, colorId));
       } else {
@@ -47,8 +46,7 @@ export async function saveColor(input: unknown): Promise<ActionResult> {
             name: data.name,
             fabricTypeId: data.fabricTypeId,
             colorCode: data.colorCode,
-            hex: "#B9BBBD",
-            photoPath,
+            hex: data.hex,
           })
           .returning({ id: colors.id });
         if (!row) throw new Error("Gagal membuat warna");

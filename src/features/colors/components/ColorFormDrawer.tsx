@@ -5,9 +5,9 @@ import { useState, useTransition } from "react";
 import { Button, Field, Input, Select } from "@/components/ui/controls";
 import { Drawer } from "@/components/ui/Drawer";
 import { Note } from "@/components/ui/primitives";
-import { PhotoField, type PhotoValue } from "@/features/photos/components/PhotoField";
 import { saveColor } from "../actions";
 import type { ColorCatalogData, ColorView, SlotView } from "../queries";
+import { ColorPicker } from "./ColorPicker";
 import styles from "./colors.module.css";
 
 type PairingState = Record<string, { primary: string; backup: string }>;
@@ -56,10 +56,7 @@ export function ColorFormDrawer({
     color?.fabricId ?? data.fabrics[0]?.id ?? "",
   );
   const [colorCode, setColorCode] = useState(color?.colorCode ?? "");
-  const [photo, setPhoto] = useState<PhotoValue>({
-    path: color?.photoPath ?? null,
-    url: color?.photoUrl ?? null,
-  });
+  const [hex, setHex] = useState(color?.hex ?? "#B9BBBD");
   const [productIds, setProductIds] = useState<string[]>(
     color
       ? color.products.map((product) => product.id)
@@ -128,7 +125,7 @@ export function ColorFormDrawer({
         name,
         fabricTypeId,
         colorCode,
-        photoPath: photo.path,
+        hex,
         productIds,
         pairings: data.slots.map((slot) => ({
           slotId: slot.id,
@@ -166,14 +163,6 @@ export function ColorFormDrawer({
       {error ? <Note tone="danger">{error}</Note> : null}
 
       <div className={styles.formTop}>
-        <div className={styles.photoSlot}>
-          <PhotoField
-            label="Foto kain"
-            prefix="colors"
-            value={photo}
-            onChange={setPhoto}
-          />
-        </div>
         <Field label="Warna Kain" htmlFor="color-name" className="grow">
           <Input
             id="color-name"
@@ -181,22 +170,6 @@ export function ColorFormDrawer({
             placeholder="Misalnya: Latte"
             onChange={(event) => setName(event.target.value)}
           />
-        </Field>
-      </div>
-
-      <div className="g2" style={{ gap: 12 }}>
-        <Field label="Jenis Kain" htmlFor="color-fabric">
-          <Select
-            id="color-fabric"
-            value={fabricTypeId}
-            onChange={(event) => setFabricTypeId(event.target.value)}
-          >
-            {data.fabrics.map((fabric) => (
-              <option key={fabric.id} value={fabric.id}>
-                {fabric.code}
-              </option>
-            ))}
-          </Select>
         </Field>
         <Field label="Kode Warna Kain" htmlFor="color-code">
           <Input
@@ -207,6 +180,29 @@ export function ColorFormDrawer({
             onChange={(event) => setColorCode(event.target.value)}
           />
         </Field>
+      </div>
+
+      <Field
+        label="Jenis Kain"
+        htmlFor="color-fabric"
+        hint="Dipakai untuk mengelompokkan kain di katalog."
+      >
+        <Select
+          id="color-fabric"
+          value={fabricTypeId}
+          onChange={(event) => setFabricTypeId(event.target.value)}
+        >
+          {data.fabrics.map((fabric) => (
+            <option key={fabric.id} value={fabric.id}>
+              {fabric.code}
+            </option>
+          ))}
+        </Select>
+      </Field>
+
+      <div className="col" style={{ gap: 8 }}>
+        <span className="flabel">Warna</span>
+        <ColorPicker value={hex} onChange={setHex} />
       </div>
 
       <div className="col" style={{ gap: 6 }}>

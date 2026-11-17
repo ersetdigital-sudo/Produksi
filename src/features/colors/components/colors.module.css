@@ -433,20 +433,6 @@
   font: 500 12px var(--font-jakarta), system-ui, sans-serif;
 }
 
-.thumb {
-  display: block;
-  flex: none;
-  background-image: var(--ph);
-  background-size: cover;
-  background-position: center;
-  border: 1px solid var(--ln2);
-}
-
-.photoSlot {
-  width: 168px;
-  flex: none;
-}
-
 .formTop {
   display: flex;
   align-items: flex-start;
@@ -522,10 +508,6 @@
 
   .formTop {
     flex-direction: column;
-  }
-
-  .photoSlot {
-    width: 100%;
   }
 
   .photo {

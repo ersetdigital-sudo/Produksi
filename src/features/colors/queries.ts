@@ -19,7 +19,6 @@ import {
   type ColorSummary,
   type StockStatus,
 } from "@/features/stock/status";
-import { signPhotos } from "@/features/photos/storage";
 import { toNumber } from "@/lib/format";
 
 export type MaterialInfo = {
@@ -48,8 +47,6 @@ export type ColorView = {
   hex: string;
   fabricId: string;
   fabricCode: string;
-  photoPath: string | null;
-  photoUrl: string | null;
   products: { id: string; name: string; slug: string }[];
   pairings: ColorPairingView[];
   summary: ColorSummary;
@@ -89,7 +86,6 @@ export async function getColorCatalog(): Promise<ColorCatalogData> {
         fabricId: colors.fabricTypeId,
         fabricCode: fabricTypes.code,
         fabricSort: fabricTypes.sortOrder,
-        photoPath: colors.photoPath,
         sort: colors.sortOrder,
       })
       .from(colors)
@@ -198,10 +194,6 @@ export async function getColorCatalog(): Promise<ColorCatalogData> {
       .filter((row): row is MaterialInfo => Boolean(row)),
   }));
 
-  const photoUrls = await signPhotos(
-    colorRows.map((row) => row.photoPath).filter((path): path is string => Boolean(path)),
-  );
-
   const colorViews: ColorView[] = colorRows.map((color) => {
     const pairings: ColorPairingView[] = slots.map((slot) => {
       const pairing = pairingByKey.get(`${color.id}:${slot.id}`);
@@ -234,8 +226,6 @@ export async function getColorCatalog(): Promise<ColorCatalogData> {
       hex: color.hex,
       fabricId: color.fabricId,
       fabricCode: color.fabricCode,
-      photoPath: color.photoPath ?? null,
-      photoUrl: color.photoPath ? photoUrls.get(color.photoPath) ?? null : null,
       products: productsByColor.get(color.id) ?? [],
       pairings,
       summary: summarizeColorStatus(pairings.map((pairing) => pairing.status)),
