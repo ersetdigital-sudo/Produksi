@@ -2,10 +2,10 @@
 
 import { Button, ButtonLink } from "@/components/ui/controls";
 import { Drawer } from "@/components/ui/Drawer";
-import { Swatch } from "@/components/ui/primitives";
 import { StatusBadge } from "@/components/ui/badges";
 import { formatQty } from "@/lib/format";
 import type { ColorPairingView, ColorView } from "../queries";
+import { ColorThumb } from "./ColorThumb";
 import styles from "./colors.module.css";
 
 function materialLabel(
@@ -62,7 +62,13 @@ export function ColorDetailDrawer({
       eyebrow={color ? `${color.fabricCode} · ${color.colorCode}` : undefined}
       leading={
         color ? (
-          <Swatch color={color.hex} size={44} radius={8} label={`Foto kain ${color.name}`} />
+          <ColorThumb
+            hex={color.hex}
+            photoUrl={color.photoUrl}
+            name={color.name}
+            size={44}
+            radius={8}
+          />
         ) : null
       }
       bodyClassName={styles.bodyFlush}

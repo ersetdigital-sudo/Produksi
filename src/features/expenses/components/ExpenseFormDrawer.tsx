@@ -5,6 +5,7 @@ import { useMemo, useState, useTransition } from "react";
 import { Button, Field, Input, Select, Textarea } from "@/components/ui/controls";
 import { Drawer } from "@/components/ui/Drawer";
 import { Note } from "@/components/ui/primitives";
+import { PhotoField, type PhotoValue } from "@/features/photos/components/PhotoField";
 import { convertQuantity } from "@/features/stock/units";
 import { formatCurrency, formatQty } from "@/lib/format";
 import { recordExpense } from "../actions";
@@ -47,6 +48,7 @@ export function ExpenseFormDrawer({
   const [machineId, setMachineId] = useState("");
   const [amount, setAmount] = useState("");
   const [description, setDescription] = useState("");
+  const [receipt, setReceipt] = useState<PhotoValue>({ path: null, url: null });
   const [lines, setLines] = useState<Line[]>(() => [
     { key: nextLineKey++, materialId: lookup.materials[0]?.id ?? "", qty: "", unit: lookup.materials[0]?.unit ?? "pcs", price: "" },
   ]);
@@ -180,7 +182,7 @@ export function ExpenseFormDrawer({
         amount: isPurchase ? 0 : Number(amount || 0),
         description,
         items,
-        receiptPath: null,
+        receiptPath: receipt.path,
       });
       if (!result.ok) {
         setError(result.error);
@@ -389,25 +391,13 @@ export function ExpenseFormDrawer({
         />
       </Field>
 
-      <div className="col" style={{ gap: 6 }}>
-        <span className="flabel">Foto nota (opsional)</span>
-        <Button
-          variant="secondary"
-          className=""
-          style={{
-            height: 56,
-            borderStyle: "dashed",
-            borderColor: "var(--ln3)",
-          }}
-          type="button"
-        >
-          <svg className="i" viewBox="0 0 24 24">
-            <path d="M4 8h3l2-3h6l2 3h3v11H4z" />
-            <circle cx="12" cy="13" r="3.5" />
-          </svg>
-          Pilih atau ambil foto nota
-        </Button>
-      </div>
+      <PhotoField
+        label="Foto nota (opsional)"
+        prefix="receipts"
+        value={receipt}
+        onChange={setReceipt}
+        hint="JPG, PNG, WEBP, atau HEIC. Maksimal 5 MB."
+      />
     </Drawer>
   );
 }

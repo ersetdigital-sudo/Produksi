@@ -104,6 +104,14 @@
   flex-wrap: wrap;
 }
 
+.receiptImage {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--ln2);
+  border-radius: 8px;
+  background: var(--sf2);
+}
+
 .filterNote {
   font-size: 13px;
   color: var(--ink3);

@@ -4,8 +4,8 @@ import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import { Button, Field, Input, Select } from "@/components/ui/controls";
 import { Drawer } from "@/components/ui/Drawer";
-import { Icon } from "@/components/ui/icons";
 import { Note } from "@/components/ui/primitives";
+import { PhotoField, type PhotoValue } from "@/features/photos/components/PhotoField";
 import { saveColor } from "../actions";
 import type { ColorCatalogData, ColorView, SlotView } from "../queries";
 import styles from "./colors.module.css";
@@ -56,6 +56,10 @@ export function ColorFormDrawer({
     color?.fabricId ?? data.fabrics[0]?.id ?? "",
   );
   const [colorCode, setColorCode] = useState(color?.colorCode ?? "");
+  const [photo, setPhoto] = useState<PhotoValue>({
+    path: color?.photoPath ?? null,
+    url: color?.photoUrl ?? null,
+  });
   const [productIds, setProductIds] = useState<string[]>(
     color
       ? color.products.map((product) => product.id)
@@ -124,6 +128,7 @@ export function ColorFormDrawer({
         name,
         fabricTypeId,
         colorCode,
+        photoPath: photo.path,
         productIds,
         pairings: data.slots.map((slot) => ({
           slotId: slot.id,
@@ -161,9 +166,13 @@ export function ColorFormDrawer({
       {error ? <Note tone="danger">{error}</Note> : null}
 
       <div className={styles.formTop}>
-        <div className={styles.photo}>
-          <Icon name="camera" />
-          Foto kain
+        <div className={styles.photoSlot}>
+          <PhotoField
+            label="Foto kain"
+            prefix="colors"
+            value={photo}
+            onChange={setPhoto}
+          />
         </div>
         <Field label="Warna Kain" htmlFor="color-name" className="grow">
           <Input

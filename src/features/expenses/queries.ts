@@ -14,6 +14,7 @@ import {
   users,
 } from "@/db/schema";
 import { toNumber } from "@/lib/format";
+import { signPhotos } from "@/features/photos/storage";
 
 export type ExpenseView = {
   id: string;
@@ -25,6 +26,7 @@ export type ExpenseView = {
   machineName: string | null;
   description: string | null;
   hasReceipt: boolean;
+  receiptUrl: string | null;
   items: {
     materialLabel: string;
     qtyPurchase: number;
@@ -156,6 +158,7 @@ export async function getExpensePage(
         categoryName: expenseCategories.name,
         isPurchase: expenseCategories.isPurchase,
         hasReceipt: sql<boolean>`${expenses.receiptPath} is not null`,
+        receiptPath: expenses.receiptPath,
         userName: users.name,
       })
       .from(expenses)
@@ -201,6 +204,12 @@ export async function getExpensePage(
     itemsByExpense.set(item.expenseId, list);
   }
 
+  const receiptUrls = await signPhotos(
+    expenseRows
+      .map((row) => row.receiptPath)
+      .filter((path): path is string => Boolean(path)),
+  );
+
   const expensesView: ExpenseView[] = expenseRows.map((row) => ({
     id: row.id,
     expenseDate: row.expenseDate,
@@ -211,6 +220,7 @@ export async function getExpensePage(
     machineName: row.machineName,
     description: row.description,
     hasReceipt: Boolean(row.hasReceipt),
+    receiptUrl: row.receiptPath ? receiptUrls.get(row.receiptPath) ?? null : null,
     items: itemsByExpense.get(row.id) ?? [],
   }));
 

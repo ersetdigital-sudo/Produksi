@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { Badge } from "@/components/ui/badges";
 import { Button } from "@/components/ui/controls";
+import { Drawer } from "@/components/ui/Drawer";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { formatCurrency } from "@/lib/format";
 import type { ExpenseView } from "../queries";
@@ -41,6 +42,7 @@ export function ExpensePage({
   onOpenForm?: () => void;
 }) {
   const [formOpen, setFormOpen] = useState(false);
+  const [receipt, setReceipt] = useState<ExpenseView | null>(null);
 
   const monthLabel = (value: string) => {
     const [year, month] = value.split("-").map(Number);
@@ -230,8 +232,12 @@ export function ExpensePage({
                     </td>
                     <td className="sub">{expense.machineName ?? "Tanpa mesin"}</td>
                     <td>
-                      {expense.hasReceipt ? (
-                        <button type="button" className="btn btn-g btn-sm">
+                      {expense.receiptUrl ? (
+                        <button
+                          type="button"
+                          className="btn btn-g btn-sm"
+                          onClick={() => setReceipt(expense)}
+                        >
                           Lihat
                         </button>
                       ) : (
@@ -255,6 +261,27 @@ export function ExpensePage({
           onClose={() => setFormOpen(false)}
           onSaved={() => setFormOpen(false)}
         />
+      ) : null}
+
+      {receipt?.receiptUrl ? (
+        <Drawer
+          open
+          onClose={() => setReceipt(null)}
+          title="Foto nota"
+          eyebrow={`${receipt.expenseDate.split("-").reverse().join(" ")} · ${receipt.categoryName}`}
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={receipt.receiptUrl}
+            alt={`Foto nota ${receipt.description ?? receipt.categoryName}`}
+            className={styles.receiptImage}
+          />
+          {receipt.description ? <p className="sub">{receipt.description}</p> : null}
+          <div className="row sp">
+            <span className="sub">Jumlah</span>
+            <b className="num">{formatCurrency(receipt.amount)}</b>
+          </div>
+        </Drawer>
       ) : null}
     </>
   );

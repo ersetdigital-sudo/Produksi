@@ -19,6 +19,7 @@ export const colorInputSchema = z.object({
   name: z.string().trim().min(1, "Nama warna wajib diisi"),
   fabricTypeId: z.string().uuid("Jenis kain wajib dipilih"),
   colorCode: z.string().trim().min(1, "Kode warna wajib diisi"),
+  photoPath: z.string().trim().min(1).nullable().optional(),
   productIds: z.array(z.string().uuid()).default([]),
   pairings: z.array(colorPairingInputSchema).default([]),
 });
